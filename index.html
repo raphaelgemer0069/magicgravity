@@ -4,22 +4,29 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Rocha Chueiri — Crônicas do Reino</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <!-- Fontes medievais -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>
+        A Rocha Chueiri | RPG Medieval
+    </title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=MedievalSharp&family=Uncial+Antiqua&display=swap"
-          rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=MedievalSharp&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
-
-        /* =====================================================
-           CONFIGURAÇÕES GERAIS
-        ====================================================== */
 
         * {
             margin: 0;
@@ -33,53 +40,47 @@
 
         body {
 
-            color: #2d2116;
+            font-family: Georgia, serif;
 
-            font-family: Georgia, "Times New Roman", serif;
+            color: #eadfc9;
 
-            background-color: #17120d;
-
-            background-image:
-                radial-gradient(
-                    circle at center,
-                    rgba(117, 79, 39, 0.25),
-                    transparent 65%
+            background:
+                linear-gradient(
+                    rgba(10, 7, 4, .94),
+                    rgba(20, 13, 7, .96)
                 );
 
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
 
-        /* =====================================================
-           BARRA DE NAVEGAÇÃO
-        ====================================================== */
+        /* ==================================================
+           NAVEGAÇÃO
+        ================================================== */
 
         header {
 
             position: fixed;
 
             top: 0;
-            left: 0;
 
             width: 100%;
 
             z-index: 1000;
 
             background:
-                linear-gradient(
-                    rgba(28, 20, 13, 0.97),
-                    rgba(19, 13, 8, 0.97)
-                );
+                rgba(18, 11, 6, .97);
 
-            border-bottom: 3px solid #9a712e;
+            border-bottom:
+                2px solid #a47a31;
 
             box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.7);
+                0 4px 20px #000;
         }
 
         nav {
 
-            max-width: 1200px;
+            max-width: 1250px;
 
             margin: auto;
 
@@ -87,20 +88,18 @@
 
             display: flex;
 
-            align-items: center;
-
             justify-content: space-between;
+
+            align-items: center;
         }
 
         .logo {
 
-            font-family: "Cinzel", serif;
+            font-family: Cinzel;
 
-            color: #d7b76a;
+            font-weight: 800;
 
-            font-size: 1.2rem;
-
-            font-weight: 700;
+            color: #d8b45e;
 
             letter-spacing: 2px;
         }
@@ -109,36 +108,31 @@
 
             display: flex;
 
-            gap: 25px;
-
             list-style: none;
+
+            gap: 25px;
         }
 
         nav a {
 
-            color: #d8c7a3;
+            color: #d6c6a5;
 
             text-decoration: none;
 
-            font-family: "Cinzel", serif;
+            font-family: Cinzel;
 
-            font-size: 0.9rem;
-
-            transition: 0.3s;
+            font-size: .9rem;
         }
 
         nav a:hover {
 
-            color: #e7c76f;
-
-            text-shadow:
-                0 0 10px rgba(231, 199, 111, 0.5);
+            color: #e9c96c;
         }
 
 
-        /* =====================================================
-           HERO
-        ====================================================== */
+        /* ==================================================
+           HERO / JOGO
+        ================================================== */
 
         .hero {
 
@@ -146,277 +140,585 @@
 
             display: flex;
 
-            justify-content: center;
-
             align-items: center;
+
+            justify-content: center;
 
             text-align: center;
 
-            padding: 130px 25px 80px;
-
-            position: relative;
-
-            overflow: hidden;
+            padding:
+                130px 20px 80px;
 
             background:
 
-                linear-gradient(
-                    rgba(17, 12, 7, 0.45),
-                    rgba(17, 12, 7, 0.9)
-                ),
-
                 radial-gradient(
                     circle at center,
-                    #68502c,
-                    #251a10 45%,
-                    #0c0906 85%
+                    rgba(103, 72, 32, .7),
+                    rgba(13, 8, 4, .98) 70%
                 );
-        }
-
-        /* textura de pergaminho / pedra */
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background-image:
-
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 3px,
-                    rgba(255,255,255,0.015) 4px
-                );
-
-            pointer-events: none;
         }
 
         .hero-content {
 
-            max-width: 950px;
-
-            position: relative;
-
-            z-index: 2;
+            max-width: 1000px;
         }
 
-        .crest {
+        .castle {
 
-            font-size: 5rem;
-
-            margin-bottom: 10px;
+            font-size: 6rem;
 
             filter:
                 drop-shadow(
-                    0 5px 10px rgba(0,0,0,.8)
+                    0 10px 10px #000
                 );
         }
 
         .hero h1 {
 
-            font-family: "Uncial Antiqua", cursive;
+            font-family:
+                "Cinzel",
+                serif;
 
-            font-size: clamp(
-                3rem,
-                8vw,
-                6.5rem
-            );
+            font-size:
+                clamp(
+                    3rem,
+                    8vw,
+                    6rem
+                );
 
-            color: #d8b969;
+            color: #daba63;
 
             text-shadow:
-
-                3px 3px 0 #25180c,
-
-                0 0 15px rgba(0,0,0,.8);
+                3px 3px #241508;
         }
 
-        .hero h2 {
+        .subtitle {
 
-            font-family: "MedievalSharp", cursive;
+            font-family:
+                "MedievalSharp",
+                cursive;
 
-            color: #d8c7a3;
+            font-size: 1.7rem;
 
-            font-weight: normal;
+            color: #cbb995;
 
-            font-size: clamp(
-                1.2rem,
-                3vw,
-                2rem
-            );
-
-            margin-top: 10px;
+            margin: 10px 0 25px;
         }
 
-        .ornament {
-
-            color: #b58a3c;
-
-            font-size: 2rem;
-
-            margin: 15px 0;
-        }
-
-        .hero p {
+        .hero-description {
 
             max-width: 750px;
 
-            margin: 25px auto;
+            margin: auto;
 
-            color: #d0c1a7;
+            color: #c5b69a;
 
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
 
-        /* =====================================================
-           BOTÃO
-        ====================================================== */
+        /* ==================================================
+           BOTÕES
+        ================================================== */
+
+        .buttons {
+
+            margin-top: 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
 
         .btn {
 
-            display: inline-block;
-
-            padding: 13px 30px;
-
-            color: #24180c;
-
-            background:
-                linear-gradient(
-                    #d9bb70,
-                    #9d722d
-                );
-
-            border: 2px solid #e1c987;
+            padding:
+                15px 28px;
 
             text-decoration: none;
 
-            font-family: "Cinzel", serif;
+            font-family: Cinzel;
 
-            font-weight: 700;
+            font-weight: bold;
+
+            border: 2px solid #c59a43;
+
+            background:
+                linear-gradient(
+                    #c59b48,
+                    #75501e
+                );
+
+            color: #1b1107;
 
             box-shadow:
-
-                0 5px 0 #4c3518,
-
-                0 10px 20px rgba(0,0,0,.5);
+                0 5px 0 #3b260f,
+                0 10px 20px #0008;
 
             transition: .25s;
         }
 
         .btn:hover {
 
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
             background:
                 linear-gradient(
-                    #ecd58e,
-                    #b78b3c
+                    #e1c16e,
+                    #9b702b
                 );
+        }
+
+        .btn-dark {
+
+            background:
+                #20150c;
+
+            color: #d7bd83;
 
             box-shadow:
-
-                0 8px 0 #4c3518,
-
-                0 15px 25px rgba(0,0,0,.6);
+                0 5px 0 #090604;
         }
 
 
-        /* =====================================================
-           SEÇÕES
-        ====================================================== */
+        /* ==================================================
+           CONTAINER
+        ================================================== */
 
         section {
 
-            max-width: 1150px;
+            max-width: 1200px;
 
             margin: auto;
 
-            padding: 100px 25px;
+            padding: 90px 25px;
         }
 
-        .section-title {
+        .title {
 
             text-align: center;
 
-            margin-bottom: 45px;
+            margin-bottom: 50px;
         }
 
-        .section-title h2 {
+        .title h2 {
 
-            font-family: "Cinzel", serif;
+            font-family: Cinzel;
+
+            color: #d2af5d;
 
             font-size: 2.4rem;
-
-            color: #b4883c;
-
-            text-shadow:
-                1px 1px 0 #000;
         }
 
-        .section-title p {
+        .title p {
 
-            color: #75644d;
+            color: #98886c;
 
             font-style: italic;
-
-            margin-top: 5px;
         }
 
-        .intro {
 
-            max-width: 850px;
+        /* ==================================================
+           COMO JOGAR
+        ================================================== */
 
-            margin: auto;
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(210px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .step {
+
+            position: relative;
+
+            padding: 30px 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #352316,
+                    #1b1008
+                );
+
+            border:
+                1px solid #765522;
 
             text-align: center;
 
-            font-size: 1.08rem;
+            box-shadow:
+                0 8px 20px #0007;
+        }
 
-            color: #cdbfa8;
+        .number {
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #a77a2d;
+
+            color: #1b1007;
+
+            font-family: Cinzel;
+
+            font-weight: bold;
+        }
+
+        .step .icon {
+
+            font-size: 3rem;
+
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+
+            font-family: Cinzel;
+
+            color: #d8b968;
+
+            margin-bottom: 10px;
+        }
+
+        .step p {
+
+            color: #bbae95;
         }
 
 
-        /* =====================================================
-           SEÇÕES ESCURAS
-        ====================================================== */
+        /* ==================================================
+           SISTEMA DO RPG
+        ================================================== */
 
-        #mundo,
-        #evolucao,
-        #familias,
-        #territorio,
-        #segredos {
+        .system {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .system-card {
+
+            padding: 30px;
+
+            background:
+                #e1d0a5;
+
+            color: #382714;
+
+            border:
+                3px solid #765321;
+
+            box-shadow:
+                inset 0 0 25px #76532144,
+                0 8px 20px #0008;
+        }
+
+        .system-card h3 {
+
+            font-family: Cinzel;
+
+            color: #654718;
+
+            margin-bottom: 12px;
+        }
+
+        .system-card .big {
+
+            font-size: 3rem;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* ==================================================
+           PERSONAGEM
+        ================================================== */
+
+        .character {
+
+            padding: 60px 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #332214,
+                    #120b06
+                );
+
+            border:
+                4px double #a47b32;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 35px #000;
+        }
+
+        .character h2 {
+
+            font-family: Cinzel;
+
+            color: #d8b967;
+
+            font-size: 2.5rem;
+        }
+
+        .character p {
+
+            max-width: 700px;
+
+            margin:
+                20px auto;
+
+            color: #c8b99e;
+        }
+
+        .stats {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin: 30px 0;
+        }
+
+        .stat {
+
+            min-width: 130px;
+
+            padding: 15px;
+
+            background: #1a1008;
+
+            border:
+                1px solid #775625;
+        }
+
+        .stat strong {
+
+            display: block;
+
+            color: #d7b562;
+
+            font-family: Cinzel;
+        }
+
+
+        /* ==================================================
+           FAMÍLIAS
+        ================================================== */
+
+        .families {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(230px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .family {
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    #d9c595,
+                    #bba46c
+                );
+
+            color: #342313;
+
+            border:
+                2px solid #6d4c1e;
+
+            transition: .3s;
+        }
+
+        .family:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 10px 25px #0009;
+        }
+
+        .family-icon {
+
+            font-size: 4rem;
+        }
+
+        .family h3 {
+
+            font-family: Cinzel;
+
+            color: #5d4017;
+
+            margin: 10px 0;
+        }
+
+
+        /* ==================================================
+           CAÇA
+        ================================================== */
+
+        .hunt {
+
+            background:
+                linear-gradient(
+                    rgba(20, 10, 4, .9),
+                    rgba(20, 10, 4, .95)
+                );
+
+            border-top:
+                2px solid #805c28;
+
+            border-bottom:
+                2px solid #805c28;
+        }
+
+        .monster {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(230px, 1fr)
+                );
+
+            gap: 20px;
+
+            margin-top: 30px;
+        }
+
+        .monster-card {
+
+            padding: 30px;
+
+            background:
+                #20130a;
+
+            border:
+                1px solid #6c4b20;
+
+            text-align: center;
+        }
+
+        .monster-card span {
+
+            font-size: 4rem;
+        }
+
+        .monster-card h3 {
+
+            color: #d1ad5c;
+
+            font-family: Cinzel;
+
+            margin: 10px;
+        }
+
+        .monster-card p {
+
+            color: #aaa08c;
+        }
+
+
+        /* ==================================================
+           TORNEIO
+        ================================================== */
+
+        .tournament {
+
+            padding: 70px 30px;
+
+            text-align: center;
 
             background:
 
-                linear-gradient(
-                    rgba(231, 216, 184, 0.97),
-                    rgba(201, 183, 143, 0.97)
+                radial-gradient(
+                    circle,
+                    #52391b,
+                    #160d06 70%
                 );
 
-            border-left:
-                10px solid #51371b;
-
-            border-right:
-                10px solid #51371b;
+            border:
+                5px double #c0953c;
 
             box-shadow:
+                0 15px 40px #000;
+        }
 
-                inset 0 0 60px rgba(69, 42, 14, 0.35),
+        .tournament .trophy {
 
-                0 10px 30px rgba(0,0,0,.5);
+            font-size: 6rem;
+        }
+
+        .tournament h2 {
+
+            font-family:
+                "MedievalSharp";
+
+            font-size: 3rem;
+
+            color: #e1c16c;
+        }
+
+        .tournament p {
+
+            max-width: 750px;
+
+            margin: 20px auto;
+
+            color: #c9b99d;
         }
 
 
-        /* =====================================================
-           CARDS
-        ====================================================== */
+        /* ==================================================
+           MISSÕES
+        ================================================== */
 
-        .cards {
+        .missions {
 
             display: grid;
 
@@ -427,353 +729,89 @@
                 );
 
             gap: 20px;
-
-            margin-top: 35px;
         }
 
-        .card {
+        .mission {
 
-            padding: 30px;
+            padding: 25px;
 
             background:
+                #dfcea1;
 
-                linear-gradient(
-                    145deg,
-                    #ead9ad,
-                    #c8b27d
-                );
+            color: #3b2917;
 
-            border:
-
-                2px solid #795823;
+            border-left:
+                7px solid #76521e;
 
             box-shadow:
-
-                inset 0 0 25px
-                rgba(70,40,10,.2),
-
-                0 6px 12px
-                rgba(0,0,0,.25);
-
-            transition: .3s;
-
-            position: relative;
+                0 7px 15px #0006;
         }
 
-        /* canto decorativo */
+        .mission h3 {
 
-        .card::before {
+            font-family: Cinzel;
 
-            content: "✦";
-
-            position: absolute;
-
-            top: 8px;
-            right: 12px;
-
-            color: #8e6828;
+            color: #634416;
         }
 
-        .card:hover {
+        .difficulty {
 
-            transform:
-                translateY(-6px)
-                rotate(-0.5deg);
+            margin-top: 10px;
 
-            box-shadow:
+            color: #9b2e20;
 
-                0 12px 20px
-                rgba(0,0,0,.35);
-        }
-
-        .card .icon {
-
-            font-size: 2.7rem;
-
-            margin-bottom: 12px;
-        }
-
-        .card h3 {
-
-            font-family: "Cinzel", serif;
-
-            color: #654719;
-
-            margin-bottom: 10px;
-        }
-
-        .card p {
-
-            color: #4d3b24;
+            font-weight: bold;
         }
 
 
-        /* =====================================================
-           PROGRESSÃO
-        ====================================================== */
+        /* ==================================================
+           SEGREDOS
+        ================================================== */
 
-        .progression {
+        .secret {
 
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            flex-wrap: wrap;
-
-            gap: 15px;
-
-            margin-top: 45px;
-        }
-
-        .level {
-
-            min-width: 160px;
-
-            padding: 20px;
-
-            text-align: center;
-
-            background:
-                #352416;
-
-            color: #d8c7a3;
-
-            border:
-                2px solid #9a712e;
-
-            box-shadow:
-                0 5px 10px rgba(0,0,0,.4);
-        }
-
-        .level strong {
-
-            display: block;
-
-            color: #d8b969;
-
-            font-family: "Cinzel", serif;
-
-            margin-bottom: 5px;
-        }
-
-        .arrow {
-
-            color: #8a6224;
-
-            font-size: 1.8rem;
-        }
-
-
-        /* =====================================================
-           COMPETIÇÃO
-        ====================================================== */
-
-        .competition {
-
-            max-width: 1050px;
+            max-width: 850px;
 
             margin: auto;
 
-            padding: 70px 35px;
+            padding: 60px 30px;
 
             text-align: center;
 
             background:
-
-                linear-gradient(
-                    135deg,
-                    #2d1e11,
-                    #120c07
+                radial-gradient(
+                    circle,
+                    #342315,
+                    #0e0804
                 );
 
             border:
-
-                5px double #a77b31;
-
-            box-shadow:
-
-                0 15px 40px
-                rgba(0,0,0,.7);
+                4px double #8b672c;
         }
 
-        .trophy {
+        .secret .icon {
 
-            font-size: 5rem;
-
-            filter:
-                drop-shadow(
-                    0 5px 10px
-                    rgba(0,0,0,.7)
-                );
+            font-size: 4rem;
         }
 
-        .competition h2 {
+        .secret h2 {
 
-            font-family: "Uncial Antiqua", cursive;
+            font-family: Cinzel;
 
-            color: #d8b969;
-
-            font-size: 2.7rem;
+            color: #d4b15e;
 
             margin: 15px 0;
         }
 
-        .competition p {
+        .secret p {
 
-            max-width: 750px;
-
-            margin: 15px auto;
-
-            color: #cdbda0;
-        }
-
-        .competition .card {
-
-            background:
-                linear-gradient(
-                    #46321d,
-                    #27180e
-                );
-
-            border-color: #80602b;
-        }
-
-        .competition .card h3 {
-
-            color: #d5b86f;
-        }
-
-        .competition .card p {
-
-            color: #c8b99e;
+            color: #c5b79e;
         }
 
 
-        /* =====================================================
-           MAPA
-        ====================================================== */
-
-        .map {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(190px, 1fr)
-                );
-
-            gap: 15px;
-        }
-
-        .location {
-
-            padding: 25px;
-
-            text-align: center;
-
-            background:
-
-                linear-gradient(
-                    #dfc995,
-                    #bda56c
-                );
-
-            border:
-                2px solid #74521f;
-
-            box-shadow:
-                0 5px 10px rgba(0,0,0,.3);
-        }
-
-        .location span {
-
-            display: block;
-
-            font-size: 2.7rem;
-
-            margin-bottom: 8px;
-        }
-
-        .location h3 {
-
-            font-family: "Cinzel", serif;
-
-            color: #604317;
-        }
-
-        .location p {
-
-            color: #503e25;
-        }
-
-
-        /* =====================================================
-           SEGREDOS
-        ====================================================== */
-
-        .secret-box {
-
-            max-width: 800px;
-
-            margin: auto;
-
-            padding: 55px 35px;
-
-            text-align: center;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    #332316,
-                    #120b06
-                );
-
-            border:
-                4px double #9a712e;
-
-            color: #d3c2a4;
-
-            box-shadow:
-                0 15px 30px rgba(0,0,0,.5);
-        }
-
-        .secret-box .icon {
-
-            font-size: 4rem;
-
-            margin-bottom: 15px;
-        }
-
-        .question {
-
-            font-family:
-                "MedievalSharp",
-                cursive;
-
-            font-size: 1.5rem;
-
-            color: #d9ba70;
-
-            margin: 25px 0;
-        }
-
-        .secret-box h3 {
-
-            font-family: "Cinzel", serif;
-
-            color: #d9ba70;
-
-            margin-top: 20px;
-        }
-
-
-        /* =====================================================
-           RODAPÉ
-        ====================================================== */
+        /* ==================================================
+           FOOTER
+        ================================================== */
 
         footer {
 
@@ -781,40 +819,33 @@
 
             text-align: center;
 
-            color: #a99a7e;
-
-            background:
-
-                linear-gradient(
-                    #181009,
-                    #090604
-                );
+            background: #0c0704;
 
             border-top:
-                4px solid #80602b;
+                3px solid #735321;
+
+            color: #81745f;
         }
 
         footer strong {
 
-            font-family: "Cinzel", serif;
+            font-family: Cinzel;
 
-            color: #d5b66c;
-
-            font-size: 1.2rem;
+            color: #d1ae5b;
         }
 
 
-        /* =====================================================
-           RESPONSIVIDADE
-        ====================================================== */
+        /* ==================================================
+           MOBILE
+        ================================================== */
 
-        @media (max-width: 700px) {
+        @media(max-width: 700px) {
 
             nav {
 
                 flex-direction: column;
 
-                gap: 10px;
+                gap: 12px;
             }
 
             nav ul {
@@ -831,19 +862,19 @@
                 padding-top: 160px;
             }
 
-            section {
-
-                padding: 70px 18px;
-            }
-
-            .arrow {
-
-                transform: rotate(90deg);
-            }
-
             .hero h1 {
 
-                font-size: 3.2rem;
+                font-size: 3rem;
+            }
+
+            .buttons {
+
+                flex-direction: column;
+            }
+
+            .btn {
+
+                width: 100%;
             }
         }
 
@@ -855,9 +886,9 @@
 <body>
 
 
-<!-- =========================================================
-     NAVEGAÇÃO
-========================================================== -->
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <header>
 
@@ -870,26 +901,32 @@
         <ul>
 
             <li>
-                <a href="#mundo">
-                    O Reino
+                <a href="#jogar">
+                    COMO JOGAR
                 </a>
             </li>
 
             <li>
-                <a href="#evolucao">
-                    Aprendizado
+                <a href="#personagem">
+                    PERSONAGEM
                 </a>
             </li>
 
             <li>
-                <a href="#competicao">
-                    Torneio
+                <a href="#familias">
+                    FAMÍLIAS
                 </a>
             </li>
 
             <li>
-                <a href="#segredos">
-                    Mistérios
+                <a href="#cacada">
+                    CAÇADAS
+                </a>
+            </li>
+
+            <li>
+                <a href="#torneio">
+                    TORNEIO
                 </a>
             </li>
 
@@ -900,9 +937,9 @@
 </header>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HERO
-========================================================== -->
+===================================================== -->
 
 <main>
 
@@ -910,7 +947,7 @@
 
     <div class="hero-content">
 
-        <div class="crest">
+        <div class="castle">
             🏰
         </div>
 
@@ -918,138 +955,36 @@
             A Rocha Chueiri
         </h1>
 
-        <div class="ornament">
-            ⚜ ━━━━━ ✦ ━━━━━ ⚜
+        <div class="subtitle">
+            RPG Medieval de Magia e Aventura
         </div>
 
-        <h2>
-            Academia Arcana das Montanhas Nebulosas
-        </h2>
+        <p class="hero-description">
 
-        <p>
+            Atravesse os portões de uma antiga academia
+            mágica escondida nas Montanhas Nebulosas.
 
-            Entre muralhas antigas, florestas encantadas
-            e montanhas cobertas pela névoa, jovens de
-            diversas raças aprendem os segredos da magia.
-
-            Mas além dos livros e das salas de aula,
-            monstros aguardam aqueles que possuem coragem
-            para enfrentá-los.
+            Crie seu personagem, escolha sua família,
+            aprenda magia, cace monstros e participe
+            da maior competição da escola.
 
         </p>
 
-        <a
-            href="#mundo"
-            class="btn"
-        >
-            ⚔ Adentrar a Academia
-        </a>
+        <div class="buttons">
 
-    </div>
+            <a
+                href="#personagem"
+                class="btn"
+            >
+                ⚔ CRIAR PERSONAGEM
+            </a>
 
-</section>
-
-
-<!-- =========================================================
-     O MUNDO
-========================================================== -->
-
-<section id="mundo">
-
-    <div class="section-title">
-
-        <h2>
-            ⚜ O Reino Mágico ⚜
-        </h2>
-
-        <p>
-            "Onde antigos conhecimentos ainda vivem."
-        </p>
-
-    </div>
-
-    <p class="intro">
-
-        A Rocha Chueiri é uma escola mágica ancestral,
-        escondida entre as Montanhas Nebulosas.
-
-        Seus salões recebem jovens de diversas raças,
-        que aprendem magia enquanto convivem com criaturas
-        lendárias.
-
-    </p>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="icon">
-                🦅
-            </div>
-
-            <h3>
-                Grifos
-            </h3>
-
-            <p>
-                Guardiões dos céus e símbolos de coragem,
-                os grifos habitam os altos picos das montanhas.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🔥
-            </div>
-
-            <h3>
-                Fênixes
-            </h3>
-
-            <p>
-                Criaturas ancestrais que carregam em suas
-                penas os mistérios do fogo e do renascimento.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🐉
-            </div>
-
-            <h3>
-                Dragões
-            </h3>
-
-            <p>
-                Seres antigos e poderosos que conhecem
-                segredos que nenhum livro ousa registrar.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                👹
-            </div>
-
-            <h3>
-                Monstros
-            </h3>
-
-            <p>
-                Criaturas escondidas nas florestas, cavernas
-                e ruínas que cercam a academia.
-            </p>
+            <a
+                href="#jogar"
+                class="btn btn-dark"
+            >
+                📜 COMO JOGAR
+            </a>
 
         </div>
 
@@ -1058,152 +993,113 @@
 </section>
 
 
-<!-- =========================================================
-     EVOLUÇÃO
-========================================================== -->
+<!-- =====================================================
+     COMO JOGAR
+===================================================== -->
 
-<section id="evolucao">
+<section id="jogar">
 
-    <div class="section-title">
+    <div class="title">
 
         <h2>
-            📜 O Caminho do Aprendiz
+            ⚔ Como Jogar
         </h2>
 
         <p>
-            "Conhecimento sem coragem é apenas uma promessa."
+            Sua jornada começa aqui.
         </p>
 
     </div>
 
 
-    <p class="intro">
-
-        A força de cada aluno é medida por seu nível.
-
-        Para evoluir, é necessário dedicar-se a duas
-        grandes artes:
-
-        <strong>
-            o estudo da magia
-        </strong>
-
-        e
-
-        <strong>
-            a caça de monstros.
-        </strong>
-
-    </p>
+    <div class="steps">
 
 
-    <div class="cards">
+        <div class="step">
 
-        <div class="card">
+            <div class="number">
+                I
+            </div>
+
+            <div class="icon">
+                🧙
+            </div>
+
+            <h3>
+                Crie seu Personagem
+            </h3>
+
+            <p>
+                Escolha sua raça, família,
+                habilidades e descubra
+                seu potencial mágico.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">
+                II
+            </div>
 
             <div class="icon">
                 📚
             </div>
 
             <h3>
-                Estudos Arcanos
+                Estude Magia
             </h3>
 
             <p>
-
-                O aprendizado teórico acontece constantemente.
-
-                Mesmo à distância, o conhecimento continua
-                sendo transmitido como um antigo sussurro
-                de sabedoria.
-
+                Participe das aulas e aumente
+                seus conhecimentos mágicos.
             </p>
 
         </div>
 
 
-        <div class="card">
+        <div class="step">
+
+            <div class="number">
+                III
+            </div>
 
             <div class="icon">
                 ⚔️
             </div>
 
             <h3>
-                Caçada
+                Cace Monstros
             </h3>
 
             <p>
-
-                A caça exige presença e coragem.
-
-                O aluno deverá abandonar a segurança
-                das muralhas e enfrentar criaturas mágicas
-                no mundo exterior.
-
+                Enfrente criaturas perigosas
+                e conquiste experiência.
             </p>
 
         </div>
 
-    </div>
 
+        <div class="step">
 
-    <div class="progression">
+            <div class="number">
+                IV
+            </div>
 
-        <div class="level">
+            <div class="icon">
+                🏆
+            </div>
 
-            <strong>
-                📖 Estudo
-            </strong>
+            <h3>
+                Dispute o Torneio
+            </h3>
 
-            Conhecimento
-
-        </div>
-
-
-        <div class="arrow">
-            ➜
-        </div>
-
-
-        <div class="level">
-
-            <strong>
-                ⚔️ Caçada
-            </strong>
-
-            Experiência
-
-        </div>
-
-
-        <div class="arrow">
-            ➜
-        </div>
-
-
-        <div class="level">
-
-            <strong>
-                ✨ Evolução
-            </strong>
-
-            Novo nível
-
-        </div>
-
-
-        <div class="arrow">
-            ➜
-        </div>
-
-
-        <div class="level">
-
-            <strong>
-                🧙 Poder
-            </strong>
-
-            Novas habilidades
+            <p>
+                Forme uma equipe e enfrente
+                os outros alunos.
+            </p>
 
         </div>
 
@@ -1212,450 +1108,630 @@
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
+     SISTEMA
+===================================================== -->
+
+<section>
+
+    <div class="title">
+
+        <h2>
+            📜 Sistema de Progressão
+        </h2>
+
+        <p>
+            O poder deve ser conquistado.
+        </p>
+
+    </div>
+
+
+    <div class="system">
+
+
+        <div class="system-card">
+
+            <div class="big">
+                📚
+            </div>
+
+            <h3>
+                Conhecimento
+            </h3>
+
+            <p>
+                Estude magia constantemente.
+                Suas aulas aumentam seu conhecimento
+                e desbloqueiam novas possibilidades.
+            </p>
+
+        </div>
+
+
+        <div class="system-card">
+
+            <div class="big">
+                ⚔️
+            </div>
+
+            <h3>
+                Experiência
+            </h3>
+
+            <p>
+                Participe de caçadas e enfrente
+                monstros para adquirir experiência.
+            </p>
+
+        </div>
+
+
+        <div class="system-card">
+
+            <div class="big">
+                📈
+            </div>
+
+            <h3>
+                Nível
+            </h3>
+
+            <p>
+                Acumule experiência para subir de
+                nível e desenvolver seu personagem.
+            </p>
+
+        </div>
+
+
+        <div class="system-card">
+
+            <div class="big">
+                🔮
+            </div>
+
+            <h3>
+                Habilidades
+            </h3>
+
+            <p>
+                Quanto maior seu nível, mais
+                habilidades e desafios estarão
+                disponíveis.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PERSONAGEM
+===================================================== -->
+
+<section id="personagem">
+
+    <div class="character">
+
+        <h2>
+            🧙 Crie seu Personagem
+        </h2>
+
+        <p>
+
+            Seu personagem será sua identidade dentro
+            da Rocha Chueiri.
+
+            Escolha seu caminho, desenvolva suas
+            habilidades e construa sua própria história.
+
+        </p>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>
+                    NÍVEL
+                </strong>
+
+                1
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    MAGIA
+                </strong>
+
+                10
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    FORÇA
+                </strong>
+
+                10
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    CORAGEM
+                </strong>
+
+                10
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    EXPERIÊNCIA
+                </strong>
+
+                0 / 100
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="#familias"
+            class="btn"
+        >
+            ESCOLHER MINHA FAMÍLIA
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAMÍLIAS
+===================================================== -->
+
+<section id="familias">
+
+    <div class="title">
+
+        <h2>
+            🛡️ Escolha sua Família
+        </h2>
+
+        <p>
+            Seu sobrenome será parte da sua história.
+        </p>
+
+    </div>
+
+
+    <div class="families">
+
+
+        <div class="family">
+
+            <div class="family-icon">
+                🦁
+            </div>
+
+            <h3>
+                Casa dos Bravos
+            </h3>
+
+            <p>
+                Guerreiros e caçadores conhecidos
+                pela coragem.
+            </p>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="family-icon">
+                🦉
+            </div>
+
+            <h3>
+                Casa dos Sábios
+            </h3>
+
+            <p>
+                Estudiosos dedicados ao conhecimento
+                e à magia.
+            </p>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="family-icon">
+                🐍
+            </div>
+
+            <h3>
+                Casa dos Arcanos
+            </h3>
+
+            <p>
+                Mestres das artes mágicas antigas
+                e proibidas.
+            </p>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="family-icon">
+                🦅
+            </div>
+
+            <h3>
+                Casa dos Exploradores
+            </h3>
+
+            <p>
+                Aventureiros que desejam conhecer
+                o mundo além das montanhas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CAÇADA
+===================================================== -->
+
+<section
+    id="cacada"
+    class="hunt"
+>
+
+    <div class="title">
+
+        <h2>
+            ⚔️ Caçadas
+        </h2>
+
+        <p>
+            A experiência é conquistada fora dos muros.
+        </p>
+
+    </div>
+
+
+    <div class="monster">
+
+
+        <div class="monster-card">
+
+            <span>
+                👹
+            </span>
+
+            <h3>
+                Goblin
+            </h3>
+
+            <p>
+                Criatura de baixo nível.
+                Ideal para novos aventureiros.
+            </p>
+
+        </div>
+
+
+        <div class="monster-card">
+
+            <span>
+                🐺
+            </span>
+
+            <h3>
+                Lobo Sombrio
+            </h3>
+
+            <p>
+                Predador mágico encontrado
+                nas florestas.
+            </p>
+
+        </div>
+
+
+        <div class="monster-card">
+
+            <span>
+                🧟
+            </span>
+
+            <h3>
+                Guardião Morto
+            </h3>
+
+            <p>
+                Uma criatura ancestral que
+                protege ruínas esquecidas.
+            </p>
+
+        </div>
+
+
+        <div class="monster-card">
+
+            <span>
+                🐉
+            </span>
+
+            <h3>
+                Dragão Antigo
+            </h3>
+
+            <p>
+                Uma das criaturas mais perigosas
+                das Montanhas Nebulosas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MISSÕES
+===================================================== -->
+
+<section>
+
+    <div class="title">
+
+        <h2>
+            📜 Quadro de Missões
+        </h2>
+
+        <p>
+            Aventureiros sempre têm trabalho a fazer.
+        </p>
+
+    </div>
+
+
+    <div class="missions">
+
+
+        <div class="mission">
+
+            <h3>
+                🌲 Patrulha da Floresta
+            </h3>
+
+            <p>
+                Investigue o desaparecimento
+                de animais próximos à escola.
+            </p>
+
+            <div class="difficulty">
+                ★☆☆☆☆ — Fácil
+            </div>
+
+        </div>
+
+
+        <div class="mission">
+
+            <h3>
+                🏚️ As Ruínas Perdidas
+            </h3>
+
+            <p>
+                Explore uma antiga construção
+                encontrada nas montanhas.
+            </p>
+
+            <div class="difficulty">
+                ★★★☆☆ — Médio
+            </div>
+
+        </div>
+
+
+        <div class="mission">
+
+            <h3>
+                🐉 O Dragão da Montanha
+            </h3>
+
+            <p>
+                Descubra por que um antigo dragão
+                despertou de seu sono.
+            </p>
+
+            <div class="difficulty">
+                ★★★★★ — Lendário
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      TORNEIO
-========================================================== -->
+===================================================== -->
 
-<section id="competicao">
+<section>
 
-    <div class="competition">
+    <div class="tournament">
 
         <div class="trophy">
             🏆
         </div>
 
         <h2>
-            O Grande Torneio
+            A Competição Anual
         </h2>
 
         <p>
 
-            Todos os anos, as turmas da Rocha Chueiri
-            reúnem-se para a tradicional Competição Anual.
+            Forme sua equipe.
+
+            Enfrente outras famílias.
+
+            Supere desafios mágicos.
+
+            Conquiste experiência.
+
+            E lute pelo lendário Troféu da
+            Rocha Chueiri.
 
         </p>
+
 
         <p>
 
-            Organizado pelo Arquimago Professor,
-            o torneio coloca cada equipe diante de
-            desafios mágicos.
+            O Arquimago Professor observará cada
+            equipe durante a competição.
+
+            Apenas aqueles que demonstrarem
+            habilidade, estratégia e união
+            poderão chegar ao final.
 
         </p>
 
 
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="icon">
-                    🧠
-                </div>
-
-                <h3>
-                    Sabedoria
-                </h3>
-
-                <p>
-                    Resolver enigmas e dominar conhecimentos.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    ⚔️
-                </div>
-
-                <h3>
-                    Combate
-                </h3>
-
-                <p>
-                    Enfrentar desafios e criaturas.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🤝
-                </div>
-
-                <h3>
-                    União
-                </h3>
-
-                <p>
-                    Nenhuma equipe vence sozinha.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🦁
-                </div>
-
-                <h3>
-                    Coragem
-                </h3>
-
-                <p>
-                    Enfrentar aquilo que causa medo.
-                </p>
-
-            </div>
-
-        </div>
+        <a
+            href="#personagem"
+            class="btn"
+        >
+            ⚔ PREPARAR PARA O TORNEIO
+        </a>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
-     FAMÍLIAS
-========================================================== -->
-
-<section id="familias">
-
-    <div class="section-title">
-
-        <h2>
-            🛡️ As Grandes Famílias
-        </h2>
-
-        <p>
-            "O sangue carrega histórias que os livros não contam."
-        </p>
-
-    </div>
-
-
-    <p class="intro">
-
-        A rivalidade entre as famílias mágicas está
-        cada vez mais acirrada.
-
-        Durante gerações, sobrenomes foram construídos
-        através de feitos, alianças e batalhas.
-
-        Agora, os jovens aprendizes carregam o peso
-        dessas antigas histórias.
-
-    </p>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="icon">
-                🦁
-            </div>
-
-            <h3>
-                A Casa dos Bravos
-            </h3>
-
-            <p>
-                Guerreiros e caçadores conhecidos por sua
-                coragem diante dos monstros.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🦉
-            </div>
-
-            <h3>
-                A Casa dos Sábios
-            </h3>
-
-            <p>
-                Estudiosos dedicados aos antigos mistérios
-                da magia.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                🐍
-            </div>
-
-            <h3>
-                A Casa dos Arcanos
-            </h3>
-
-            <p>
-                Mestres das artes mágicas esquecidas.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     TERRITÓRIO
-========================================================== -->
-
-<section id="territorio">
-
-    <div class="section-title">
-
-        <h2>
-            🗺️ As Terras da Rocha
-        </h2>
-
-        <p>
-            "Além das muralhas começa o verdadeiro perigo."
-        </p>
-
-    </div>
-
-
-    <div class="map">
-
-        <div class="location">
-
-            <span>
-                🏰
-            </span>
-
-            <h3>
-                O Castelo
-            </h3>
-
-            <p>
-                O coração da academia.
-            </p>
-
-        </div>
-
-
-        <div class="location">
-
-            <span>
-                📚
-            </span>
-
-            <h3>
-                Biblioteca
-            </h3>
-
-            <p>
-                Milhares de livros e pergaminhos antigos.
-            </p>
-
-        </div>
-
-
-        <div class="location">
-
-            <span>
-                🌲
-            </span>
-
-            <h3>
-                Floresta Nebulosa
-            </h3>
-
-            <p>
-                Lar de criaturas mágicas.
-            </p>
-
-        </div>
-
-
-        <div class="location">
-
-            <span>
-                🏚️
-            </span>
-
-            <h3>
-                Ruínas Antigas
-            </h3>
-
-            <p>
-                Vestígios de uma civilização esquecida.
-            </p>
-
-        </div>
-
-
-        <div class="location">
-
-            <span>
-                ⛰️
-            </span>
-
-            <h3>
-                Montanhas Nebulosas
-            </h3>
-
-            <p>
-                Território de dragões e monstros antigos.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
+<!-- =====================================================
      SEGREDOS
-========================================================== -->
+===================================================== -->
 
-<section id="segredos">
+<section>
 
-    <div class="section-title">
-
-        <h2>
-            🌑 Os Segredos da Rocha
-        </h2>
-
-        <p>
-            "Alguns mistérios deveriam permanecer enterrados."
-        </p>
-
-    </div>
-
-
-    <div class="secret-box">
+    <div class="secret">
 
         <div class="icon">
             🔮
         </div>
 
-        <p>
-
-            Por trás das aulas, dos torneios e das caçadas,
-            existe algo muito maior.
-
-            A Rocha Chueiri guarda segredos antigos.
-
-            Alguns estão escondidos nos corredores.
-
-            Outros permanecem enterrados nas profundezas
-            das Montanhas Nebulosas.
-
-        </p>
-
-
-        <div class="question">
-
-            "E se alguns dos próprios alunos estiverem
-            ligados aos mistérios da academia?"
-
-        </div>
-
+        <h2>
+            Existem coisas que não estão nos livros.
+        </h2>
 
         <p>
 
-            A Competição Anual poderá revelar muito mais
-            do que talento.
+            A Rocha Chueiri possui séculos de história.
+
+            Existem corredores esquecidos,
+            salas proibidas, criaturas ancestrais
+            e segredos que talvez estejam ligados
+            aos próprios alunos.
 
         </p>
 
+        <br>
 
-        <h3>
+        <p>
 
-            Poderá revelar a verdadeira história
-            da Rocha Chueiri.
+            Quanto mais você explorar,
+            mais partes da verdadeira história
+            serão reveladas.
 
-        </h3>
+        </p>
+
+        <br>
+
+        <strong>
+            ⚠ Sua aventura pode mudar o destino da Academia.
+        </strong>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FINAL
-========================================================== -->
+===================================================== -->
 
 <section>
 
-    <div class="competition">
-
-        <div class="trophy">
-            ⚔️
-        </div>
+    <div class="character">
 
         <h2>
-            A Nova Era Começa
+            ⚔️ Sua Lenda Começa Agora
         </h2>
 
         <p>
 
-            Uma nova geração atravessa os portões
-            da Rocha Chueiri.
+            Escolha seu personagem.
+
+            Escolha sua família.
+
+            Aprenda magia.
+
+            Cace monstros.
+
+            Evolua.
+
+            Forme sua equipe.
+
+            E descubra os segredos da Rocha Chueiri.
 
         </p>
 
-        <p>
+        <div class="buttons">
 
-            Alguns serão grandes magos.
+            <a
+                href="#personagem"
+                class="btn"
+            >
+                🧙 COMEÇAR A JOGAR
+            </a>
 
-            Alguns se tornarão caçadores.
-
-            Alguns conquistarão o troféu.
-
-            E alguns descobrirão verdades escondidas
-            há séculos.
-
-        </p>
-
-        <div class="ornament">
-
-            ⚜ ✦ ⚜
+            <a
+                href="#jogar"
+                class="btn btn-dark"
+            >
+                📜 VER REGRAS
+            </a>
 
         </div>
-
-        <p
-            style="
-                font-family: 'MedievalSharp';
-                font-size: 1.5rem;
-                color: #d9b86d;
-            "
-        >
-
-            "Pegue sua espada.
-            Erga sua varinha.
-            Escolha seu caminho."
-
-        </p>
-
-
-        <br>
-
-
-        <a
-            href="#mundo"
-            class="btn"
-        >
-            🏰 Entrar na Rocha Chueiri
-        </a>
 
     </div>
 
@@ -1664,17 +1740,15 @@
 </main>
 
 
-<!-- =========================================================
+<!-- =====================================================
      RODAPÉ
-========================================================== -->
+===================================================== -->
 
 <footer>
 
     <p>
         ⚜
     </p>
-
-    <br>
 
     <p>
         <strong>
@@ -1683,19 +1757,13 @@
     </p>
 
     <p>
-        Academia Arcana das Montanhas Nebulosas
+        RPG Medieval de Magia, Aventura e Mistério
     </p>
 
     <br>
 
     <p>
-        "Onde conhecimento e coragem forjam o destino."
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 — RPG A Rocha Chueiri
+        © 2026 — Todos os direitos reservados
     </p>
 
 </footer>
