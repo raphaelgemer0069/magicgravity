@@ -1,837 +1,1311 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>A Rocha Chueiri | A Competição Anual</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #05030b;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* ===== MENU ===== */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 75px;
-            padding: 0 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(
-                rgba(0,0,0,0.85),
-                rgba(0,0,0,0)
-            );
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            color: #d8b4ff;
-            text-shadow: 0 0 15px #8b3dff;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #c77dff;
-            text-shadow: 0 0 10px #9d4edd;
-        }
-
-        .menu-btn {
-            padding: 12px 22px;
-            border: 1px solid #a855f7;
-            border-radius: 4px;
-            color: white;
-            background: #7c3aed;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .menu-btn:hover {
-            background: #a855f7;
-            box-shadow: 0 0 25px #a855f7;
-        }
-
-        /* ===== HERO ===== */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 120px 8% 80px;
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(4,2,10,0.98) 0%,
-                    rgba(4,2,10,0.82) 40%,
-                    rgba(4,2,10,0.25) 100%
-                ),
-                radial-gradient(
-                    circle at 75% 45%,
-                    #42206b,
-                    #11081d 45%,
-                    #05030b 80%
-                );
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            right: -150px;
-            top: 100px;
-            border-radius: 50%;
-            background: #7c3aed;
-            filter: blur(180px);
-            opacity: 0.25;
-        }
-
-        .hero-content {
-            max-width: 650px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tag {
-            color: #c084fc;
-            font-size: 14px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(50px, 8vw, 105px);
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-
-            background: linear-gradient(
-                90deg,
-                #ffffff,
-                #d8b4fe,
-                #8b5cf6
-            );
-
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            color: #d4d4d8;
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-bottom: 35px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .primary-btn,
-        .secondary-btn {
-            padding: 16px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .primary-btn {
-            color: white;
-            background: #7c3aed;
-            box-shadow: 0 0 20px rgba(124,58,237,0.5);
-        }
-
-        .primary-btn:hover {
-            background: #a855f7;
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px rgba(168,85,247,0.7);
-        }
-
-        .secondary-btn {
-            border: 1px solid #777;
-            color: white;
-            background: rgba(255,255,255,0.05);
-        }
-
-        .secondary-btn:hover {
-            border-color: #c084fc;
-            background: rgba(192,132,252,0.1);
-        }
-
-        /* ===== PARTICULAS ===== */
-
-        .stars {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-            animation: brilho 2s infinite alternate;
-        }
-
-        @keyframes brilho {
-            from {
-                opacity: 0.2;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* ===== SEÇÕES ===== */
-
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            color: #aaa;
-            max-width: 650px;
-            line-height: 1.6;
-            margin-bottom: 50px;
-        }
-
-        /* ===== UNIVERSO ===== */
-
-        .universo {
-            background:
-                linear-gradient(#08040f, #0e0718);
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            min-height: 300px;
-            padding: 30px;
-            border: 1px solid rgba(168,85,247,0.25);
-            background: linear-gradient(
-                145deg,
-                rgba(124,58,237,0.15),
-                rgba(255,255,255,0.03)
-            );
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #a855f7;
-            box-shadow: 0 15px 50px rgba(124,58,237,0.25);
-        }
-
-        .card-icon {
-            font-size: 55px;
-            margin-bottom: 25px;
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        /* ===== COMPETIÇÃO ===== */
-
-        .competicao {
-            background:
-                radial-gradient(
-                    circle at center,
-                    #24103d,
-                    #08040f 60%
-                );
-            text-align: center;
-        }
-
-        .competition-box {
-            max-width: 900px;
-            margin: auto;
-            padding: 60px 30px;
-            border: 1px solid rgba(192,132,252,0.3);
-            background: rgba(0,0,0,0.25);
-            box-shadow: 0 0 80px rgba(124,58,237,0.12);
-        }
-
-        .competition-box h2 {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
-
-        .competition-box p {
-            max-width: 700px;
-            margin: auto;
-            color: #bbb;
-            line-height: 1.8;
-        }
-
-        /* ===== EQUIPES ===== */
-
-        .teams {
-            background: #05030b;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .team {
-            padding: 35px 20px;
-            text-align: center;
-            border: 1px solid #27202f;
-            background: #0c0813;
-            transition: 0.3s;
-        }
-
-        .team:hover {
-            border-color: #9333ea;
-            transform: scale(1.03);
-        }
-
-        .team-symbol {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .team h3 {
-            margin-bottom: 8px;
-        }
-
-        .team span {
-            color: #a78bfa;
-            font-size: 13px;
-        }
-
-        /* ===== TRAILER ===== */
-
-        .trailer {
-            min-height: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.7),
-                    rgba(0,0,0,0.9)
-                ),
-                radial-gradient(
-                    circle,
-                    #51258a,
-                    #0a0610 65%
-                );
-        }
-
-        .play-button {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid white;
-            background: rgba(124,58,237,0.7);
-            color: white;
-            font-size: 35px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            background: #a855f7;
-            box-shadow: 0 0 50px #a855f7;
-        }
-
-        .trailer h2 {
-            font-size: 45px;
-            margin: 25px 0 10px;
-        }
-
-        .trailer p {
-            color: #aaa;
-        }
-
-        /* ===== FOOTER ===== */
-
-        footer {
-            padding: 40px 8%;
-            text-align: center;
-            border-top: 1px solid #21182c;
-            background: #030208;
-            color: #777;
-        }
-
-        footer strong {
-            color: #c084fc;
-        }
-
-        /* ===== RESPONSIVO ===== */
-
-        @media (max-width: 900px) {
-
-            nav {
-                display: none;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero h1 {
-                font-size: 60px;
-            }
-        }
-
-        @media (max-width: 550px) {
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 6%;
-            }
-
-            .hero {
-                padding-left: 6%;
-                padding-right: 6%;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Rocha Chueiri</title>
+
+<style>
+
+/* =========================================
+   CONFIGURAÇÕES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #120b07;
+    color: #ead8ae;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* textura geral */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 20%,
+            rgba(0,0,0,.65) 100%
+        );
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* =========================================
+   TOPO
+========================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background:
+        linear-gradient(
+            #24140b,
+            #120a06
+        );
+
+    border-bottom: 4px solid #8d6b32;
+
+    box-shadow:
+        0 5px 25px #000;
+
+    z-index: 1000;
+}
+
+/* Logo */
+
+.logo {
+    font-size: 25px;
+
+    color: #d9b65c;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        2px 2px #000,
+        0 0 12px #8c6728;
+}
+
+/* menu */
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #ddc99c;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #f1ce68;
+
+    text-shadow:
+        0 0 10px #c79b39;
+}
+
+/* botão */
+
+.header-btn {
+    background: #8c6428;
+
+    border: 2px solid #d0a957;
+
+    color: #1b1007;
+
+    padding: 13px 20px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.header-btn:hover {
+    background: #c29846;
+
+    box-shadow:
+        0 0 20px #9c702c;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 160px 8% 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(14,8,5,.98),
+            rgba(30,17,8,.82),
+            rgba(20,10,5,.4)
+        ),
+
+        radial-gradient(
+            circle at 80% 40%,
+            #65461e,
+            #211108 45%,
+            #080403 80%
+        );
+}
+
+/* montanhas */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -100px;
+    left: -10%;
+
+    width: 120%;
+    height: 400px;
+
+    background:
+        #080504;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 60%,
+            12% 35%,
+            25% 65%,
+            40% 25%,
+            55% 60%,
+            70% 20%,
+            85% 55%,
+            100% 30%,
+            100% 100%
+        );
+}
+
+/* lua */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    right: 15%;
+    top: 20%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fff4c4,
+            #d7b85d 55%,
+            #8d6929
+        );
+
+    box-shadow:
+        0 0 80px rgba(218,186,89,.3);
+
+    opacity: .8;
+}
+
+/* conteúdo */
+
+.hero-content {
+
+    max-width: 720px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.subtitle {
+
+    color: #c29a4b;
+
+    letter-spacing: 6px;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+
+    text-transform: uppercase;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(55px, 9vw, 120px);
+
+    line-height: .82;
+
+    color: #e3c26b;
+
+    text-transform: uppercase;
+
+    text-shadow:
+
+        3px 3px #2a1608,
+
+        6px 6px #000,
+
+        0 0 20px rgba(214,166,69,.3);
+
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: #eee2c1;
+
+    font-size: .42em;
+
+    letter-spacing: 9px;
+
+    margin-top: 20px;
+}
+
+.hero p {
+
+    color: #d2c09b;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    max-width: 650px;
+
+    margin-bottom: 35px;
+}
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+
+    padding: 16px 28px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.btn-gold {
+
+    background:
+        linear-gradient(
+            #c49a4b,
+            #815a22
+        );
+
+    border: 2px solid #e0c06d;
+
+    color: #1a0d05;
+
+    box-shadow:
+        inset 0 0 8px rgba(255,255,255,.2),
+        0 5px 15px #000;
+}
+
+.btn-gold:hover {
+
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(
+            #e4bd65,
+            #a27630
+        );
+
+    box-shadow:
+        0 0 25px #b98936;
+}
+
+.btn-dark {
+
+    color: #d8bc78;
+
+    background: #180d07;
+
+    border: 2px solid #765629;
+}
+
+.btn-dark:hover {
+
+    border-color: #d0a14c;
+
+    background: #2a180b;
+}
+
+/* =========================================
+   SEÇÕES
+========================================= */
+
+section {
+    padding: 110px 8%;
+}
+
+.section-title {
+
+    font-size: 50px;
+
+    color: #d5b15e;
+
+    text-shadow:
+        3px 3px #000;
+
+    margin-bottom: 15px;
+}
+
+.section-text {
+
+    max-width: 700px;
+
+    color: #bcae8e;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+
+    margin-bottom: 50px;
+}
+
+/* =========================================
+   UNIVERSO
+========================================= */
+
+.universo {
+
+    background:
+
+        linear-gradient(
+            rgba(38,21,10,.94),
+            rgba(12,7,4,.98)
+        );
+
+    border-top: 5px solid #68491f;
+
+    border-bottom: 5px solid #68491f;
+}
+
+/* cartas */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 25px;
+}
+
+.card {
+
+    padding: 40px 30px;
+
+    min-height: 330px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #3a2110,
+            #170c06
+        );
+
+    border: 3px solid #6c4d24;
+
+    box-shadow:
+
+        inset 0 0 30px #080403,
+
+        0 15px 30px rgba(0,0,0,.6);
+
+    transition: .4s;
+
+    position: relative;
+}
+
+/* cantos */
+
+.card::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 10px;
+    left: 15px;
+
+    color: #c69b43;
+
+    font-size: 20px;
+}
+
+.card::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    bottom: 10px;
+    right: 15px;
+
+    color: #c69b43;
+
+    font-size: 20px;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color: #c49b4b;
+
+    box-shadow:
+        0 20px 40px #000,
+        0 0 20px rgba(187,140,48,.2);
+}
+
+.card-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 25px;
+}
+
+.card h3 {
+
+    font-size: 28px;
+
+    color: #d7b664;
+
+    margin-bottom: 15px;
+}
+
+.card p {
+
+    color: #bcae91;
+
+    line-height: 1.7;
+}
+
+/* =========================================
+   TORNEIO
+========================================= */
+
+.torneio {
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #54391a,
+            #1a0e07 50%,
+            #080403
+        );
+}
+
+.scroll {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 70px 50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #4b2e13,
+            #2b1709
+        );
+
+    border:
+
+        8px double #a77d35;
+
+    box-shadow:
+
+        0 20px 60px #000,
+
+        inset 0 0 50px rgba(0,0,0,.5);
+}
+
+.scroll h2 {
+
+    font-size: 55px;
+
+    color: #dfbd67;
+
+    text-shadow:
+        3px 3px #000;
+
+    margin-bottom: 25px;
+}
+
+.scroll p {
+
+    color: #d0be9b;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+}
+
+.scroll strong {
+
+    display: block;
+
+    color: #e0b957;
+
+    margin-top: 20px;
+
+    font-size: 21px;
+}
+
+/* =========================================
+   FAMÍLIAS
+========================================= */
+
+.familias {
+
+    background: #0c0704;
+}
+
+.family-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 20px;
+}
+
+.family {
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+
+        linear-gradient(
+            #2b180b,
+            #110804
+        );
+
+    border: 2px solid #61451f;
+
+    transition: .3s;
+}
+
+.family:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #c39a4a;
+
+    box-shadow:
+        0 15px 30px #000;
+}
+
+.crest {
+
+    width: 100px;
+    height: 115px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b78a38,
+            #6e4919
+        );
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 15%,
+            90% 75%,
+            50% 100%,
+            10% 75%,
+            0 15%
+        );
+
+    font-size: 48px;
+
+    border: 3px solid #d5b568;
+}
+
+.family h3 {
+
+    color: #d5b365;
+
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+.family span {
+
+    color: #998365;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   TRAILER
+========================================= */
+
+.trailer {
+
+    min-height: 550px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            rgba(8,4,2,.75),
+            rgba(8,4,2,.95)
+        ),
+
+        radial-gradient(
+            circle,
+            #694820,
+            #0b0503 65%
+        );
+
+    border-top: 4px solid #705024;
+}
+
+.play {
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    border: 4px solid #d2ad59;
+
+    background:
+        radial-gradient(
+            circle,
+            #76501e,
+            #241207
+        );
+
+    color: #e0bd68;
+
+    font-size: 38px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 35px rgba(207,158,62,.3);
+
+    transition: .3s;
+}
+
+.play:hover {
+
+    transform: scale(1.12);
+
+    box-shadow:
+        0 0 60px rgba(221,172,69,.5);
+}
+
+.trailer h2 {
+
+    margin-top: 30px;
+
+    font-size: 48px;
+
+    color: #d6b363;
+
+    text-shadow:
+        2px 2px #000;
+}
+
+.trailer p {
+
+    color: #aa997b;
+
+    margin-top: 10px;
+}
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+footer {
+
+    padding: 45px;
+
+    text-align: center;
+
+    background: #060302;
+
+    border-top: 3px solid #5e421d;
+
+    color: #766852;
+}
+
+footer strong {
+
+    color: #c19a4c;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(max-width:900px) {
+
+    nav {
+        display: none;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .family-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .family-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .scroll h2 {
+        font-size: 38px;
+    }
+
+    .section-title {
+        font-size: 38px;
+    }
+
+    .header-btn {
+        display: none;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- MENU -->
 
-    <header>
+<!-- =========================================
+     MENU
+========================================= -->
 
-        <div class="logo">
-            ROCHA CHUEIRI
-        </div>
+<header>
 
-        <nav>
-            <a href="#inicio">INÍCIO</a>
-            <a href="#universo">UNIVERSO</a>
-            <a href="#competicao">COMPETIÇÃO</a>
-            <a href="#equipes">EQUIPES</a>
-            <a href="#trailer">TRAILER</a>
-        </nav>
+    <div class="logo">
+        ⚔ ROCHA CHUEIRI
+    </div>
 
-        <a href="#competicao" class="menu-btn">
-            ENTRAR
+    <nav>
+
+        <a href="#inicio">
+            INÍCIO
         </a>
 
-    </header>
+        <a href="#reino">
+            O REINO
+        </a>
+
+        <a href="#torneio">
+            TORNEIO
+        </a>
+
+        <a href="#familias">
+            FAMÍLIAS
+        </a>
+
+        <a href="#cronicas">
+            CRÔNICAS
+        </a>
+
+    </nav>
+
+    <a
+        href="#torneio"
+        class="header-btn"
+    >
+        ENTRAR NO REINO
+    </a>
+
+</header>
 
 
-    <!-- HERO -->
+<!-- =========================================
+     HERO
+========================================= -->
 
-    <section class="hero" id="inicio">
+<section
+    class="hero"
+    id="inicio"
+>
 
-        <div class="stars">
-            <span class="star" style="top:15%;left:12%;"></span>
-            <span class="star" style="top:30%;left:30%;"></span>
-            <span class="star" style="top:12%;left:55%;"></span>
-            <span class="star" style="top:70%;left:20%;"></span>
-            <span class="star" style="top:80%;left:75%;"></span>
-            <span class="star" style="top:40%;left:90%;"></span>
-            <span class="star" style="top:60%;left:60%;"></span>
-            <span class="star" style="top:20%;left:80%;"></span>
+    <div class="hero-content">
+
+        <div class="subtitle">
+            ✦ UMA LENDA MEDIEVAL ✦
         </div>
 
-        <div class="hero-content">
+        <h1>
 
-            <div class="tag">
-                Uma aventura mágica começa
-            </div>
+            A ROCHA
 
-            <h1>
-                A Rocha<br>
-                Chueiri
-            </h1>
+            <span>
+                CHUEIRI
+            </span>
 
-            <p>
-                Entre nas Montanhas Nebulosas e descubra uma escola
-                ancestral onde jovens de diversas raças aprendem a
-                dominar a magia ao lado de grifos, fênixes e dragões.
-            </p>
+        </h1>
 
-            <div class="buttons">
+        <p>
 
-                <a href="#competicao" class="primary-btn">
-                    CONHEÇA A COMPETIÇÃO
-                </a>
-
-                <a href="#universo" class="secondary-btn">
-                    EXPLORAR O UNIVERSO
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- UNIVERSO -->
-
-    <section class="universo" id="universo">
-
-        <h2 class="section-title">
-            UM MUNDO DE MAGIA
-        </h2>
-
-        <p class="section-subtitle">
-            Uma escola escondida entre montanhas antigas.
-            Um lugar onde magia, criaturas fantásticas e famílias
-            lendárias se encontram.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="card-icon">🏰</div>
-
-                <h3>
-                    A Escola
-                </h3>
-
-                <p>
-                    Construída há séculos nas profundezas das
-                    Montanhas Nebulosas, a Rocha Chueiri guarda
-                    conhecimentos mágicos que poucos conhecem.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🐉</div>
-
-                <h3>
-                    Criaturas Mágicas
-                </h3>
-
-                <p>
-                    Grifos, fênixes, dragões e outras criaturas
-                    extraordinárias fazem parte do cotidiano dos
-                    estudantes.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🔮</div>
-
-                <h3>
-                    Magia Ancestral
-                </h3>
-
-                <p>
-                    Feitiços esquecidos e poderes ancestrais podem
-                    revelar segredos escondidos dentro da escola.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- COMPETIÇÃO -->
-
-    <section class="competicao" id="competicao">
-
-        <div class="competition-box">
-
-            <div class="tag">
-                O grande desafio
-            </div>
-
-            <h2>
-                A COMPETIÇÃO ANUAL
-            </h2>
-
-            <p>
-                Organizada pelo Arquimago Professor, a competição
-                coloca as famílias mais habilidosas da escola diante
-                de desafios mágicos cada vez mais perigosos.
-
-                <br><br>
-
-                Cada prova exige inteligência, coragem, união e
-                domínio da magia. Mas existe algo que ninguém
-                esperava encontrar...
-
-                <br><br>
-
-                <strong>
-                    Segredos antigos estão despertando.
-                </strong>
-            </p>
+            Nas montanhas cobertas pela névoa existe
+            um castelo que poucos mortais conseguiram encontrar.
 
             <br><br>
 
-            <a href="#equipes" class="primary-btn">
-                CONHECER AS EQUIPES
+            Ali, jovens de diversas raças aprendem os segredos
+            da magia ao lado de dragões, grifos e fênixes.
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#torneio"
+                class="btn btn-gold"
+            >
+                ⚔ CONHECER O TORNEIO
+            </a>
+
+            <a
+                href="#reino"
+                class="btn btn-dark"
+            >
+                EXPLORAR O REINO
             </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- EQUIPES -->
+<!-- =========================================
+     REINO
+========================================= -->
 
-    <section class="teams" id="equipes">
+<section
+    class="universo"
+    id="reino"
+>
 
-        <h2 class="section-title">
-            AS GRANDES FAMÍLIAS
-        </h2>
+    <h2 class="section-title">
+        O REINO DA ROCHA CHUEIRI
+    </h2>
 
-        <p class="section-subtitle">
-            Quatro famílias entram na disputa pelo lendário troféu.
-            Apenas uma poderá escrever seu nome na história da escola.
-        </p>
+    <p class="section-text">
+
+        Muito além das terras conhecidas existe uma antiga escola
+        de magia. Seus muros foram construídos há centenas de anos
+        e seus corredores escondem histórias que nenhum livro conta.
+
+    </p>
 
 
-        <div class="team-grid">
+    <div class="cards">
 
-            <div class="team">
 
-                <div class="team-symbol">
-                    🦅
-                </div>
+        <div class="card">
 
-                <h3>
-                    Família Aether
-                </h3>
-
-                <span>
-                    DOMÍNIO DOS CÉUS
-                </span>
-
+            <div class="card-icon">
+                🏰
             </div>
 
-
-            <div class="team">
-
-                <div class="team-symbol">
-                    🔥
-                </div>
-
-                <h3>
-                    Família Ignis
-                </h3>
-
-                <span>
-                    MAGIA DO FOGO
-                </span>
-
-            </div>
-
-
-            <div class="team">
-
-                <div class="team-symbol">
-                    🌙
-                </div>
-
-                <h3>
-                    Família Noctis
-                </h3>
-
-                <span>
-                    ARTES SOMBRIAS
-                </span>
-
-            </div>
-
-
-            <div class="team">
-
-                <div class="team-symbol">
-                    🐉
-                </div>
-
-                <h3>
-                    Família Drakon
-                </h3>
-
-                <span>
-                    PODER DOS DRAGÕES
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRAILER -->
-
-    <section class="trailer" id="trailer">
-
-        <div>
-
-            <button
-                class="play-button"
-                onclick="abrirTrailer()">
-                ▶
-            </button>
-
-            <h2>
-                O SEGREDO ESTÁ DESPERTANDO
-            </h2>
+            <h3>
+                O Castelo
+            </h3>
 
             <p>
-                Assista ao trailer e descubra o mundo da Rocha Chueiri.
+
+                Uma fortaleza medieval construída sobre as
+                Montanhas Nebulosas. Torres antigas, masmorras,
+                salões reais e passagens secretas fazem parte
+                da escola.
+
             </p>
 
         </div>
 
-    </section>
+
+        <div class="card">
+
+            <div class="card-icon">
+                🐉
+            </div>
+
+            <h3>
+                Criaturas
+            </h3>
+
+            <p>
+
+                Dragões vigiam as montanhas enquanto grifos
+                cruzam os céus. Nas torres mais antigas,
+                fênixes protegem os segredos da escola.
+
+            </p>
+
+        </div>
 
 
-    <!-- FOOTER -->
+        <div class="card">
 
-    <footer>
+            <div class="card-icon">
+                📜
+            </div>
+
+            <h3>
+                Magia Antiga
+            </h3>
+
+            <p>
+
+                Pergaminhos, runas e grimórios guardam
+                feitiços ancestrais que podem mudar
+                o destino daqueles que os dominarem.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     TORNEIO
+========================================= -->
+
+<section
+    class="torneio"
+    id="torneio"
+>
+
+    <div class="scroll">
+
+        <div class="subtitle">
+            ✦ O GRANDE TORNEIO ✦
+        </div>
+
+        <h2>
+            A COMPETIÇÃO ANUAL
+        </h2>
 
         <p>
-            © 2026 <strong>A Rocha Chueiri</strong>.
-            Uma aventura mágica entre as Montanhas Nebulosas.
+
+            Todos os anos, o Arquimago Professor convoca
+            as famílias mais poderosas para uma competição
+            que colocará seus conhecimentos mágicos à prova.
+
+            <br><br>
+
+            Cada equipe deverá enfrentar desafios,
+            criaturas lendárias e enigmas escondidos
+            dentro das antigas muralhas.
+
         </p>
 
-    </footer>
+        <strong>
+
+            Mas desta vez existe algo diferente...
+
+            <br>
+
+            Uma antiga magia está despertando.
+
+        </strong>
+
+        <br><br>
+
+        <a
+            href="#familias"
+            class="btn btn-gold"
+        >
+            VER AS FAMÍLIAS
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- JAVASCRIPT -->
+<!-- =========================================
+     FAMÍLIAS
+========================================= -->
 
-    <script>
+<section
+    class="familias"
+    id="familias"
+>
 
-        function abrirTrailer() {
+    <h2 class="section-title">
+        AS QUATRO FAMÍLIAS
+    </h2>
 
-            alert(
-                "O trailer da Rocha Chueiri está sendo preparado... " +
-                "A magia está apenas começando!"
-            );
+    <p class="section-text">
 
-        }
+        Quatro famílias entram no torneio.
+        Apenas uma poderá conquistar o lendário
+        Troféu da Rocha Chueiri.
 
-
-        // Efeito de aparição das seções
-
-        const elementos = document.querySelectorAll(
-            ".card, .team, .competition-box"
-        );
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.15
-            }
-        );
+    </p>
 
 
-        elementos.forEach((elemento) => {
+    <div class="family-grid">
 
-            elemento.style.opacity = "0";
-            elemento.style.transform = "translateY(40px)";
-            elemento.style.transition = "0.8s ease";
 
-            observer.observe(elemento);
+        <div class="family">
 
-        });
+            <div class="crest">
+                🦅
+            </div>
 
-    </script>
+            <h3>
+                Casa Aether
+            </h3>
+
+            <span>
+                SENHORES DOS CÉUS
+            </span>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="crest">
+                🔥
+            </div>
+
+            <h3>
+                Casa Ignis
+            </h3>
+
+            <span>
+                MESTRES DO FOGO
+            </span>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="crest">
+                🌙
+            </div>
+
+            <h3>
+                Casa Noctis
+            </h3>
+
+            <span>
+                GUARDIÕES DA NOITE
+            </span>
+
+        </div>
+
+
+        <div class="family">
+
+            <div class="crest">
+                🐉
+            </div>
+
+            <h3>
+                Casa Drakon
+            </h3>
+
+            <span>
+                HERDEIROS DOS DRAGÕES
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     CRÔNICAS
+========================================= -->
+
+<section
+    class="trailer"
+    id="cronicas"
+>
+
+    <div>
+
+        <button
+            class="play"
+            onclick="abrirCronica()"
+        >
+            ▶
+        </button>
+
+        <h2>
+            AS CRÔNICAS COMEÇAM
+        </h2>
+
+        <p>
+            A história da Rocha Chueiri está apenas começando.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+
+        ⚔ © 2026
+
+        <strong>
+            A Rocha Chueiri
+        </strong>
+
+        ⚔
+
+        <br><br>
+
+        As Montanhas Nebulosas guardam muitos segredos.
+
+    </p>
+
+</footer>
+
+
+<script>
+
+function abrirCronica() {
+
+    alert(
+        "📜 O antigo pergaminho foi aberto...\n\n" +
+        "A Competição Anual está prestes a começar."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
-
-
