@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>A Rocha Chueiri</title>
 
+
 <style>
 
-/* =========================================
-   CONFIGURAÇÕES
-========================================= */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -23,613 +28,1018 @@ html {
 }
 
 body {
-    background: #120b07;
-    color: #ead8ae;
-    font-family: Georgia, "Times New Roman", serif;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background: #07080f;
+
+    color: #eee4ce;
+
+    overflow-x: hidden;
+
+    transition:
+        background 1s ease,
+        color 1s ease;
 }
 
-/* textura geral */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+/* =====================================================
+   VARIÁVEIS — MODO ESCURO
+===================================================== */
+
+:root {
+
+    --fundo: #07080f;
+
+    --fundo2: #0d101c;
+
+    --painel: #111522;
+
+    --texto: #e8dfca;
+
+    --texto-fraco: #aaa99f;
+
+    --ouro: #c79d45;
+
+    --ouro-claro: #f0ce75;
+
+    --borda: #675124;
+
+    --magia: #755cff;
+
+    --magia-clara: #a993ff;
+
+    --luz: rgba(116, 91, 255, .3);
+
+    --pergaminho: #d7bd82;
+
+    --pergaminho-texto: #30200e;
+
+    --sombra: #000;
+
+    --ceu1: #070914;
+
+    --ceu2: #18132e;
+
+}
+
+
+/* =====================================================
+   MODO CLARO
+===================================================== */
+
+body.light {
+
+    --fundo: #d8c18b;
+
+    --fundo2: #efe0b5;
+
+    --painel: #ead39b;
+
+    --texto: #32200e;
+
+    --texto-fraco: #685538;
+
+    --ouro: #825616;
+
+    --ouro-claro: #b7781c;
+
+    --borda: #8b6426;
+
+    --magia: #7047a5;
+
+    --magia-clara: #a467cf;
+
+    --luz: rgba(255, 201, 91, .5);
+
+    --pergaminho: #f4dfaa;
+
+    --pergaminho-texto: #38220c;
+
+    --sombra: rgba(63, 39, 10, .35);
+
+    --ceu1: #86b9db;
+
+    --ceu2: #e9d49c;
+
+}
+
+
+/* =====================================================
+   FUNDO
+===================================================== */
+
+body {
 
     background:
         radial-gradient(
-            circle at center,
-            transparent 20%,
-            rgba(0,0,0,.65) 100%
+            circle at 50% 20%,
+            var(--ceu2),
+            var(--ceu1) 60%,
+            var(--fundo)
         );
 
-    pointer-events: none;
-    z-index: 20;
 }
 
-/* =========================================
-   TOPO
-========================================= */
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+.particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    overflow: hidden;
+}
+
+.particle {
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: var(--magia-clara);
+
+    box-shadow:
+        0 0 12px var(--magia);
+
+    animation:
+        flutuar 8s infinite ease-in-out;
+
+    opacity: .5;
+}
+
+@keyframes flutuar {
+
+    0% {
+
+        transform:
+            translateY(100vh)
+            translateX(0);
+
+        opacity: 0;
+
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    80% {
+        opacity: .8;
+    }
+
+    100% {
+
+        transform:
+            translateY(-20vh)
+            translateX(80px);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
 
 header {
+
     position: fixed;
+
     top: 0;
     left: 0;
 
     width: 100%;
-    height: 90px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: 80px;
 
-    padding: 0 7%;
+    z-index: 1000;
 
     background:
         linear-gradient(
-            #24140b,
-            #120a06
+            rgba(5,5,10,.95),
+            rgba(8,7,13,.75)
         );
 
-    border-bottom: 4px solid #8d6b32;
+    border-bottom:
+        2px solid var(--ouro);
 
-    box-shadow:
-        0 5px 25px #000;
+    backdrop-filter:
+        blur(10px);
 
-    z-index: 1000;
+    transition: 1s;
 }
 
-/* Logo */
+body.light header {
+
+    background:
+        linear-gradient(
+            rgba(246,224,170,.95),
+            rgba(230,205,140,.82)
+        );
+
+}
+
+
+.menu {
+
+    width: 90%;
+
+    max-width: 1400px;
+
+    height: 100%;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
 
 .logo {
-    font-size: 25px;
 
-    color: #d9b65c;
+    color: var(--ouro-claro);
+
+    font-size: 23px;
 
     font-weight: bold;
 
     letter-spacing: 3px;
 
     text-shadow:
-        2px 2px #000,
-        0 0 12px #8c6728;
+        2px 2px var(--sombra);
 }
 
-/* menu */
 
 nav {
+
     display: flex;
+
     gap: 30px;
 }
 
 nav a {
-    color: #ddc99c;
+
+    color: var(--texto);
 
     text-decoration: none;
 
-    font-weight: bold;
+    font-size: 13px;
 
-    font-size: 14px;
-
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 
     transition: .3s;
 }
 
 nav a:hover {
-    color: #f1ce68;
+
+    color: var(--ouro-claro);
 
     text-shadow:
-        0 0 10px #c79b39;
+        0 0 12px var(--ouro);
 }
 
-/* botão */
 
-.header-btn {
-    background: #8c6428;
+/* =====================================================
+   BOTÃO DE TEMA
+===================================================== */
 
-    border: 2px solid #d0a957;
+.theme-button {
 
-    color: #1b1007;
+    border: 1px solid var(--ouro);
 
-    padding: 13px 20px;
+    background:
+        rgba(0,0,0,.2);
 
-    text-decoration: none;
+    color: var(--texto);
 
-    font-weight: bold;
+    padding:
+        10px 15px;
 
-    transition: .3s;
+    cursor: pointer;
+
+    font-family:
+        Georgia,
+        serif;
+
+    transition: .4s;
 }
 
-.header-btn:hover {
-    background: #c29846;
+.theme-button:hover {
+
+    background:
+        var(--ouro);
+
+    color:
+        #211305;
 
     box-shadow:
-        0 0 20px #9c702c;
+        0 0 20px var(--ouro);
 }
 
-/* =========================================
+
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
+
     min-height: 100vh;
 
-    padding: 160px 8% 100px;
-
-    display: flex;
-
-    align-items: center;
+    padding-top: 80px;
 
     position: relative;
 
     overflow: hidden;
 
-    background:
+    display: flex;
 
-        linear-gradient(
-            90deg,
-            rgba(14,8,5,.98),
-            rgba(30,17,8,.82),
-            rgba(20,10,5,.4)
-        ),
+    justify-content: center;
+
+    align-items: center;
+
+    background:
 
         radial-gradient(
-            circle at 80% 40%,
-            #65461e,
-            #211108 45%,
-            #080403 80%
+            circle at 50% 45%,
+            var(--ceu2),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            var(--ceu1),
+            var(--fundo)
         );
+
+    transition:
+        background 1.5s ease;
 }
 
-/* montanhas */
 
-.hero::before {
+/* =====================================================
+   LUA / SOL
+===================================================== */
 
-    content: "";
+.celestial {
 
     position: absolute;
 
-    bottom: -100px;
-    left: -10%;
+    width: 190px;
+    height: 190px;
 
-    width: 120%;
-    height: 400px;
-
-    background:
-        #080504;
-
-    clip-path:
-        polygon(
-            0 100%,
-            0 60%,
-            12% 35%,
-            25% 65%,
-            40% 25%,
-            55% 60%,
-            70% 20%,
-            85% 55%,
-            100% 30%,
-            100% 100%
-        );
-}
-
-/* lua */
-
-.hero::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-    height: 250px;
+    right: 14%;
+    top: 18%;
 
     border-radius: 50%;
 
-    right: 15%;
-    top: 20%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffde7,
+            #d9c9a0 60%,
+            #756a52
+        );
+
+    box-shadow:
+        0 0 90px
+        rgba(214,220,255,.4);
+
+    transition:
+        1.5s;
+}
+
+
+/* SOL */
+
+body.light .celestial {
 
     background:
         radial-gradient(
             circle at 35% 35%,
-            #fff4c4,
-            #d7b85d 55%,
-            #8d6929
+            #fffde2,
+            #ffd76d 60%,
+            #ef9f27
         );
 
     box-shadow:
-        0 0 80px rgba(218,186,89,.3);
+        0 0 120px
+        rgba(255,194,66,.8);
 
-    opacity: .8;
 }
 
-/* conteúdo */
+
+/* =====================================================
+   MONTANHAS
+===================================================== */
+
+.mountains {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 38%;
+
+    background:
+        var(--fundo);
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 55%,
+            10% 30%,
+            20% 60%,
+            34% 20%,
+            48% 65%,
+            62% 25%,
+            76% 60%,
+            89% 30%,
+            100% 55%,
+            100% 100%
+        );
+
+    transition:
+        background 1s;
+}
+
+
+/* =====================================================
+   CASTELO
+===================================================== */
+
+.castle {
+
+    position: absolute;
+
+    bottom: 17%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 460px;
+
+    height: 250px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #171922,
+            #56555a,
+            #24252d
+        );
+
+    border:
+        5px solid #101116;
+
+    box-shadow:
+        0 0 60px #000;
+
+    transition:
+        1s;
+}
+
+
+/* Torres */
+
+.tower {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 85px;
+
+    height: 250px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #14151b,
+            #67666a,
+            #18191f
+        );
+
+    border:
+        5px solid #0c0d11;
+}
+
+.tower.left {
+    left: -60px;
+}
+
+.tower.right {
+    right: -60px;
+}
+
+.tower.center {
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 110px;
+
+    height: 310px;
+}
+
+
+/* Telhados */
+
+.tower::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -65px;
+
+    left: -10px;
+
+    width: 95px;
+
+    height: 75px;
+
+    background:
+        #101017;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 100%,
+            0 100%
+        );
+}
+
+.tower.center::before {
+
+    width: 125px;
+
+    height: 90px;
+
+    left: -12px;
+}
+
+
+/* =====================================================
+   JANELAS
+===================================================== */
+
+.window {
+
+    position: absolute;
+
+    width: 22px;
+
+    height: 48px;
+
+    border-radius:
+        50% 50% 0 0;
+
+    background:
+        #ffd86b;
+
+    box-shadow:
+        0 0 25px #ffb52c;
+
+    animation:
+        flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+
+    from {
+        opacity: .65;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.w1 {
+    left: 30px;
+    top: 45px;
+}
+
+.w2 {
+    right: 30px;
+    top: 45px;
+}
+
+.w3 {
+
+    left: 44px;
+
+    top: 70px;
+
+    width: 24px;
+
+    height: 60px;
+}
+
+
+/* No modo claro */
+
+body.light .window {
+
+    background:
+        #fff2b3;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,.7);
+}
+
+
+/* =====================================================
+   HERO TEXTO
+===================================================== */
 
 .hero-content {
 
-    max-width: 720px;
-
     position: relative;
 
-    z-index: 5;
+    z-index: 10;
+
+    text-align: center;
+
+    margin-top: 120px;
+
+    max-width: 750px;
 }
 
-.subtitle {
+.eyebrow {
 
-    color: #c29a4b;
+    color: var(--ouro-claro);
 
     letter-spacing: 6px;
 
     font-size: 13px;
 
     margin-bottom: 25px;
-
-    text-transform: uppercase;
 }
 
 .hero h1 {
 
     font-size:
-        clamp(55px, 9vw, 120px);
+        clamp(60px, 10vw, 125px);
 
-    line-height: .82;
+    line-height: .75;
 
-    color: #e3c26b;
-
-    text-transform: uppercase;
+    color: var(--ouro-claro);
 
     text-shadow:
+        4px 4px var(--sombra),
+        0 0 25px var(--luz);
 
-        3px 3px #2a1608,
-
-        6px 6px #000,
-
-        0 0 20px rgba(214,166,69,.3);
-
-    margin-bottom: 30px;
+    transition:
+        color 1s;
 }
 
 .hero h1 span {
 
     display: block;
 
-    color: #eee2c1;
+    color: var(--texto);
 
-    font-size: .42em;
+    font-size: .35em;
 
-    letter-spacing: 9px;
+    letter-spacing: 12px;
 
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .hero p {
 
-    color: #d2c09b;
-
-    font-size: 18px;
+    color: var(--texto);
 
     line-height: 1.9;
 
+    font-size: 18px;
+
+    margin:
+        35px auto;
+
     max-width: 650px;
-
-    margin-bottom: 35px;
 }
 
-/* =========================================
-   BOTÕES
-========================================= */
 
-.buttons {
+/* =====================================================
+   BOTÃO PRINCIPAL
+===================================================== */
 
-    display: flex;
+.main-button {
 
-    gap: 15px;
+    display: inline-block;
 
-    flex-wrap: wrap;
-}
+    padding:
+        16px 32px;
 
-.btn {
+    background:
+        linear-gradient(
+            #d2aa53,
+            #76511e
+        );
 
-    padding: 16px 28px;
+    border:
+        3px double #f0d078;
+
+    color:
+        #1d1005;
 
     text-decoration: none;
 
     font-weight: bold;
 
-    letter-spacing: 1px;
+    transition: .4s;
 
-    transition: .3s;
+    box-shadow:
+        0 7px 20px #000;
 }
 
-.btn-gold {
+.main-button:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 0 30px var(--ouro);
+}
+
+
+/* =====================================================
+   SEÇÃO
+===================================================== */
+
+.section {
+
+    padding:
+        120px 7%;
+
+    background:
+        var(--fundo);
+
+    transition:
+        background 1s;
+}
+
+
+/* =====================================================
+   PERGAMINHO
+===================================================== */
+
+.scroll {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        80px 9%;
+
+    position: relative;
 
     background:
         linear-gradient(
-            #c49a4b,
-            #815a22
+            90deg,
+            #ad8a4d,
+            var(--pergaminho),
+            #f1dda8,
+            var(--pergaminho),
+            #a87f3e
         );
 
-    border: 2px solid #e0c06d;
+    color:
+        var(--pergaminho-texto);
 
-    color: #1a0d05;
+    border:
+        8px solid #503013;
 
     box-shadow:
-        inset 0 0 8px rgba(255,255,255,.2),
-        0 5px 15px #000;
+        0 25px 60px var(--sombra);
+
+    transition:
+        1s;
 }
 
-.btn-gold:hover {
 
-    transform: translateY(-4px);
+/* enrolamentos */
+
+.scroll::before,
+.scroll::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -18px;
+
+    right: -18px;
+
+    height: 35px;
 
     background:
         linear-gradient(
-            #e4bd65,
-            #a27630
+            #d0a866,
+            #79551f
         );
 
-    box-shadow:
-        0 0 25px #b98936;
+    border:
+        5px solid #4d2f12;
+
+    border-radius:
+        50%;
 }
 
-.btn-dark {
-
-    color: #d8bc78;
-
-    background: #180d07;
-
-    border: 2px solid #765629;
+.scroll::before {
+    top: -22px;
 }
 
-.btn-dark:hover {
-
-    border-color: #d0a14c;
-
-    background: #2a180b;
+.scroll::after {
+    bottom: -22px;
 }
 
-/* =========================================
-   SEÇÕES
-========================================= */
 
-section {
-    padding: 110px 8%;
-}
+/* =====================================================
+   TÍTULOS
+===================================================== */
 
-.section-title {
+.scroll h2 {
+
+    text-align: center;
 
     font-size: 50px;
 
-    color: #d5b15e;
+    margin-bottom: 20px;
 
-    text-shadow:
-        3px 3px #000;
-
-    margin-bottom: 15px;
+    color:
+        var(--pergaminho-texto);
 }
 
-.section-text {
+.divider {
 
-    max-width: 700px;
+    width: 200px;
 
-    color: #bcae8e;
+    height: 3px;
 
-    line-height: 1.8;
-
-    font-size: 17px;
-
-    margin-bottom: 50px;
-}
-
-/* =========================================
-   UNIVERSO
-========================================= */
-
-.universo {
+    margin:
+        20px auto 45px;
 
     background:
-
-        linear-gradient(
-            rgba(38,21,10,.94),
-            rgba(12,7,4,.98)
-        );
-
-    border-top: 5px solid #68491f;
-
-    border-bottom: 5px solid #68491f;
+        #74501f;
 }
 
-/* cartas */
+
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards {
 
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap: 25px;
 }
 
 .card {
 
-    padding: 40px 30px;
+    text-align: center;
 
-    min-height: 330px;
+    padding: 35px 25px;
+
+    border:
+        2px solid #866329;
 
     background:
-
-        linear-gradient(
-            145deg,
-            #3a2110,
-            #170c06
-        );
-
-    border: 3px solid #6c4d24;
-
-    box-shadow:
-
-        inset 0 0 30px #080403,
-
-        0 15px 30px rgba(0,0,0,.6);
+        rgba(255,255,255,.12);
 
     transition: .4s;
-
-    position: relative;
-}
-
-/* cantos */
-
-.card::before {
-
-    content: "✦";
-
-    position: absolute;
-
-    top: 10px;
-    left: 15px;
-
-    color: #c69b43;
-
-    font-size: 20px;
-}
-
-.card::after {
-
-    content: "✦";
-
-    position: absolute;
-
-    bottom: 10px;
-    right: 15px;
-
-    color: #c69b43;
-
-    font-size: 20px;
 }
 
 .card:hover {
 
     transform:
-        translateY(-10px);
-
-    border-color: #c49b4b;
+        translateY(-10px)
+        rotate(-1deg);
 
     box-shadow:
-        0 20px 40px #000,
-        0 0 20px rgba(187,140,48,.2);
+        0 15px 25px rgba(65,40,10,.3);
 }
 
 .card-icon {
 
-    font-size: 60px;
+    font-size: 55px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .card h3 {
 
-    font-size: 28px;
-
-    color: #d7b664;
+    font-size: 27px;
 
     margin-bottom: 15px;
 }
 
 .card p {
 
-    color: #bcae91;
-
     line-height: 1.7;
+
+    color:
+        var(--pergaminho-texto);
 }
 
-/* =========================================
-   TORNEIO
-========================================= */
 
-.torneio {
+/* =====================================================
+   TORNEIO
+===================================================== */
+
+.tournament {
+
+    padding:
+        120px 7%;
 
     text-align: center;
 
     background:
-
         radial-gradient(
-            circle,
-            #54391a,
-            #1a0e07 50%,
-            #080403
-        );
-}
-
-.scroll {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 70px 50px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #4b2e13,
-            #2b1709
+            circle at center,
+            var(--painel),
+            var(--fundo)
         );
 
-    border:
-
-        8px double #a77d35;
-
-    box-shadow:
-
-        0 20px 60px #000,
-
-        inset 0 0 50px rgba(0,0,0,.5);
+    transition:
+        1s;
 }
 
-.scroll h2 {
+.tournament h2 {
 
-    font-size: 55px;
+    font-size:
+        clamp(40px,7vw,75px);
 
-    color: #dfbd67;
+    color:
+        var(--ouro-claro);
 
     text-shadow:
-        3px 3px #000;
-
-    margin-bottom: 25px;
+        3px 3px var(--sombra);
 }
 
-.scroll p {
+.tournament p {
 
-    color: #d0be9b;
+    max-width: 700px;
 
-    font-size: 18px;
+    margin:
+        30px auto;
+
+    color:
+        var(--texto);
 
     line-height: 1.9;
+
+    font-size: 18px;
 }
 
-.scroll strong {
 
-    display: block;
-
-    color: #e0b957;
-
-    margin-top: 20px;
-
-    font-size: 21px;
-}
-
-/* =========================================
+/* =====================================================
    FAMÍLIAS
-========================================= */
+===================================================== */
 
-.familias {
+.houses {
 
-    background: #0c0704;
-}
+    max-width: 1100px;
 
-.family-grid {
+    margin:
+        60px auto 0;
 
     display: grid;
 
@@ -639,53 +1049,53 @@ section {
     gap: 20px;
 }
 
-.family {
+.house {
 
-    text-align: center;
-
-    padding: 40px 20px;
+    padding:
+        35px 15px;
 
     background:
+        rgba(0,0,0,.25);
 
-        linear-gradient(
-            #2b180b,
-            #110804
-        );
+    border:
+        2px solid var(--borda);
 
-    border: 2px solid #61451f;
-
-    transition: .3s;
+    transition: .4s;
 }
 
-.family:hover {
+.house:hover {
 
-    transform: translateY(-8px);
+    transform:
+        translateY(-10px);
 
-    border-color: #c39a4a;
+    border-color:
+        var(--ouro-claro);
 
     box-shadow:
-        0 15px 30px #000;
+        0 0 25px var(--luz);
 }
 
-.crest {
+.shield {
 
-    width: 100px;
-    height: 115px;
+    width: 90px;
+
+    height: 110px;
 
     margin:
         0 auto 20px;
 
     display: flex;
 
+    justify-content: center;
+
     align-items: center;
 
-    justify-content: center;
+    font-size: 43px;
 
     background:
         linear-gradient(
-            135deg,
-            #b78a38,
-            #6e4919
+            #c99b40,
+            #6e4718
         );
 
     clip-path:
@@ -698,141 +1108,63 @@ section {
             0 15%
         );
 
-    font-size: 48px;
-
-    border: 3px solid #d5b568;
+    border:
+        3px solid var(--ouro-claro);
 }
 
-.family h3 {
+.house h3 {
 
-    color: #d5b365;
+    color:
+        var(--ouro-claro);
 
-    font-size: 23px;
-
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-.family span {
+.house span {
 
-    color: #998365;
+    color:
+        var(--texto-fraco);
 
-    font-size: 12px;
+    font-size: 11px;
 
     letter-spacing: 2px;
 }
 
-/* =========================================
-   TRAILER
-========================================= */
 
-.trailer {
-
-    min-height: 550px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-
-        linear-gradient(
-            rgba(8,4,2,.75),
-            rgba(8,4,2,.95)
-        ),
-
-        radial-gradient(
-            circle,
-            #694820,
-            #0b0503 65%
-        );
-
-    border-top: 4px solid #705024;
-}
-
-.play {
-
-    width: 120px;
-    height: 120px;
-
-    border-radius: 50%;
-
-    border: 4px solid #d2ad59;
-
-    background:
-        radial-gradient(
-            circle,
-            #76501e,
-            #241207
-        );
-
-    color: #e0bd68;
-
-    font-size: 38px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 35px rgba(207,158,62,.3);
-
-    transition: .3s;
-}
-
-.play:hover {
-
-    transform: scale(1.12);
-
-    box-shadow:
-        0 0 60px rgba(221,172,69,.5);
-}
-
-.trailer h2 {
-
-    margin-top: 30px;
-
-    font-size: 48px;
-
-    color: #d6b363;
-
-    text-shadow:
-        2px 2px #000;
-}
-
-.trailer p {
-
-    color: #aa997b;
-
-    margin-top: 10px;
-}
-
-/* =========================================
+/* =====================================================
    RODAPÉ
-========================================= */
+===================================================== */
 
 footer {
 
-    padding: 45px;
+    padding:
+        50px 20px;
 
     text-align: center;
 
-    background: #060302;
+    background:
+        #05060a;
 
-    border-top: 3px solid #5e421d;
+    color:
+        #827761;
 
-    color: #766852;
+    border-top:
+        2px solid var(--ouro);
 }
 
-footer strong {
+body.light footer {
 
-    color: #c19a4c;
+    background:
+        #b79b62;
+
+    color:
+        #493617;
 }
 
-/* =========================================
+
+/* =====================================================
    RESPONSIVO
-========================================= */
+===================================================== */
 
 @media(max-width:900px) {
 
@@ -841,107 +1173,178 @@ footer strong {
     }
 
     .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
-    .family-grid {
+    .houses {
         grid-template-columns:
             repeat(2,1fr);
     }
 
+    .castle {
+
+        transform:
+            translateX(-50%)
+            scale(.7);
+    }
 }
 
 @media(max-width:600px) {
 
-    .family-grid {
-        grid-template-columns: 1fr;
+    .houses {
+        grid-template-columns:
+            1fr;
     }
 
     .hero h1 {
         font-size: 55px;
     }
 
+    .castle {
+
+        transform:
+            translateX(-50%)
+            scale(.45);
+    }
+
+    .scroll {
+
+        padding:
+            70px 25px;
+    }
+
     .scroll h2 {
-        font-size: 38px;
+        font-size: 35px;
     }
 
-    .section-title {
-        font-size: 38px;
-    }
-
-    .header-btn {
-        display: none;
-    }
-
-    section {
-        padding: 80px 6%;
-    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================================
+<!-- =====================================================
+     PARTÍCULAS
+===================================================== -->
+
+<div class="particles">
+
+    <div class="particle"
+         style="left:10%;animation-delay:0s;"></div>
+
+    <div class="particle"
+         style="left:25%;animation-delay:2s;"></div>
+
+    <div class="particle"
+         style="left:40%;animation-delay:4s;"></div>
+
+    <div class="particle"
+         style="left:60%;animation-delay:1s;"></div>
+
+    <div class="particle"
+         style="left:75%;animation-delay:3s;"></div>
+
+    <div class="particle"
+         style="left:90%;animation-delay:5s;"></div>
+
+</div>
+
+
+<!-- =====================================================
      MENU
-========================================= -->
+===================================================== -->
 
 <header>
 
-    <div class="logo">
-        ⚔ ROCHA CHUEIRI
+    <div class="menu">
+
+        <div class="logo">
+            ⚔ ROCHA CHUEIRI
+        </div>
+
+        <nav>
+
+            <a href="#inicio">
+                Início
+            </a>
+
+            <a href="#escola">
+                Escola
+            </a>
+
+            <a href="#torneio">
+                Torneio
+            </a>
+
+            <a href="#familias">
+                Famílias
+            </a>
+
+        </nav>
+
+        <button
+            class="theme-button"
+            onclick="alternarTema()"
+            id="themeButton"
+        >
+            ☾ Noite
+        </button>
+
     </div>
-
-    <nav>
-
-        <a href="#inicio">
-            INÍCIO
-        </a>
-
-        <a href="#reino">
-            O REINO
-        </a>
-
-        <a href="#torneio">
-            TORNEIO
-        </a>
-
-        <a href="#familias">
-            FAMÍLIAS
-        </a>
-
-        <a href="#cronicas">
-            CRÔNICAS
-        </a>
-
-    </nav>
-
-    <a
-        href="#torneio"
-        class="header-btn"
-    >
-        ENTRAR NO REINO
-    </a>
 
 </header>
 
 
-<!-- =========================================
+<!-- =====================================================
      HERO
-========================================= -->
+===================================================== -->
 
 <section
     class="hero"
     id="inicio"
 >
 
+    <div class="celestial"></div>
+
+    <div class="mountains"></div>
+
+
+    <!-- CASTELO -->
+
+    <div class="castle">
+
+        <div class="tower left">
+
+            <div class="window w1"></div>
+
+        </div>
+
+        <div class="tower right">
+
+            <div class="window w2"></div>
+
+        </div>
+
+        <div class="tower center">
+
+            <div class="window w3"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEXTO -->
+
     <div class="hero-content">
 
-        <div class="subtitle">
-            ✦ UMA LENDA MEDIEVAL ✦
+        <div class="eyebrow">
+            ✦ AS CRÔNICAS DAS MONTANHAS NEBULOSAS ✦
         </div>
 
         <h1>
@@ -956,183 +1359,22 @@ footer strong {
 
         <p>
 
-            Nas montanhas cobertas pela névoa existe
-            um castelo que poucos mortais conseguiram encontrar.
+            Escondida entre montanhas ancestrais,
+            uma escola de magia aguarda aqueles
+            que possuem coragem para atravessar
+            seus portões.
 
             <br><br>
 
-            Ali, jovens de diversas raças aprendem os segredos
-            da magia ao lado de dragões, grifos e fênixes.
+            Aqui começa uma nova lenda.
 
         </p>
-
-        <div class="buttons">
-
-            <a
-                href="#torneio"
-                class="btn btn-gold"
-            >
-                ⚔ CONHECER O TORNEIO
-            </a>
-
-            <a
-                href="#reino"
-                class="btn btn-dark"
-            >
-                EXPLORAR O REINO
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     REINO
-========================================= -->
-
-<section
-    class="universo"
-    id="reino"
->
-
-    <h2 class="section-title">
-        O REINO DA ROCHA CHUEIRI
-    </h2>
-
-    <p class="section-text">
-
-        Muito além das terras conhecidas existe uma antiga escola
-        de magia. Seus muros foram construídos há centenas de anos
-        e seus corredores escondem histórias que nenhum livro conta.
-
-    </p>
-
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                🏰
-            </div>
-
-            <h3>
-                O Castelo
-            </h3>
-
-            <p>
-
-                Uma fortaleza medieval construída sobre as
-                Montanhas Nebulosas. Torres antigas, masmorras,
-                salões reais e passagens secretas fazem parte
-                da escola.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                🐉
-            </div>
-
-            <h3>
-                Criaturas
-            </h3>
-
-            <p>
-
-                Dragões vigiam as montanhas enquanto grifos
-                cruzam os céus. Nas torres mais antigas,
-                fênixes protegem os segredos da escola.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                📜
-            </div>
-
-            <h3>
-                Magia Antiga
-            </h3>
-
-            <p>
-
-                Pergaminhos, runas e grimórios guardam
-                feitiços ancestrais que podem mudar
-                o destino daqueles que os dominarem.
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     TORNEIO
-========================================= -->
-
-<section
-    class="torneio"
-    id="torneio"
->
-
-    <div class="scroll">
-
-        <div class="subtitle">
-            ✦ O GRANDE TORNEIO ✦
-        </div>
-
-        <h2>
-            A COMPETIÇÃO ANUAL
-        </h2>
-
-        <p>
-
-            Todos os anos, o Arquimago Professor convoca
-            as famílias mais poderosas para uma competição
-            que colocará seus conhecimentos mágicos à prova.
-
-            <br><br>
-
-            Cada equipe deverá enfrentar desafios,
-            criaturas lendárias e enigmas escondidos
-            dentro das antigas muralhas.
-
-        </p>
-
-        <strong>
-
-            Mas desta vez existe algo diferente...
-
-            <br>
-
-            Uma antiga magia está despertando.
-
-        </strong>
-
-        <br><br>
 
         <a
-            href="#familias"
-            class="btn btn-gold"
+            href="#escola"
+            class="main-button"
         >
-            VER AS FAMÍLIAS
+            ⚔ ENTRAR NO CASTELO
         </a>
 
     </div>
@@ -1140,39 +1382,149 @@ footer strong {
 </section>
 
 
-<!-- =========================================
-     FAMÍLIAS
-========================================= -->
+<!-- =====================================================
+     ESCOLA
+===================================================== -->
 
 <section
-    class="familias"
-    id="familias"
+    class="section"
+    id="escola"
 >
 
-    <h2 class="section-title">
-        AS QUATRO FAMÍLIAS
+    <div class="scroll">
+
+        <h2>
+            A Escola Ancestral
+        </h2>
+
+        <div class="divider"></div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🏰
+                </div>
+
+                <h3>
+                    O Castelo
+                </h3>
+
+                <p>
+
+                    Torres antigas, salões secretos,
+                    masmorras e corredores que mudam
+                    de lugar durante a noite.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🐉
+                </div>
+
+                <h3>
+                    As Criaturas
+                </h3>
+
+                <p>
+
+                    Dragões, grifos e fênixes vivem
+                    nas montanhas e possuem seus
+                    próprios mistérios.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📜
+                </div>
+
+                <h3>
+                    A Magia
+                </h3>
+
+                <p>
+
+                    Grimórios antigos revelam feitiços
+                    esquecidos que podem alterar
+                    o destino da escola.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TORNEIO
+===================================================== -->
+
+<section
+    class="tournament"
+    id="torneio"
+>
+
+    <div class="eyebrow">
+        ✦ O GRANDE DESAFIO ✦
+    </div>
+
+    <h2>
+        A COMPETIÇÃO ANUAL
     </h2>
 
-    <p class="section-text">
+    <p>
 
-        Quatro famílias entram no torneio.
-        Apenas uma poderá conquistar o lendário
-        Troféu da Rocha Chueiri.
+        O Arquimago Professor reúne as famílias
+        mais habilidosas para uma competição
+        que acontece uma vez por geração.
+
+        <br><br>
+
+        Desafios mágicos, criaturas lendárias,
+        enigmas antigos e segredos escondidos
+        nas profundezas do castelo.
+
+        <br><br>
+
+        <strong style="color:var(--ouro-claro);">
+            O troféu espera por seu novo campeão.
+        </strong>
 
     </p>
 
 
-    <div class="family-grid">
+    <div
+        class="houses"
+        id="familias"
+    >
 
 
-        <div class="family">
+        <div class="house">
 
-            <div class="crest">
+            <div class="shield">
                 🦅
             </div>
 
             <h3>
-                Casa Aether
+                Aether
             </h3>
 
             <span>
@@ -1182,14 +1534,14 @@ footer strong {
         </div>
 
 
-        <div class="family">
+        <div class="house">
 
-            <div class="crest">
+            <div class="shield">
                 🔥
             </div>
 
             <h3>
-                Casa Ignis
+                Ignis
             </h3>
 
             <span>
@@ -1199,14 +1551,14 @@ footer strong {
         </div>
 
 
-        <div class="family">
+        <div class="house">
 
-            <div class="crest">
+            <div class="shield">
                 🌙
             </div>
 
             <h3>
-                Casa Noctis
+                Noctis
             </h3>
 
             <span>
@@ -1216,14 +1568,14 @@ footer strong {
         </div>
 
 
-        <div class="family">
+        <div class="house">
 
-            <div class="crest">
+            <div class="shield">
                 🐉
             </div>
 
             <h3>
-                Casa Drakon
+                Drakon
             </h3>
 
             <span>
@@ -1238,57 +1590,20 @@ footer strong {
 </section>
 
 
-<!-- =========================================
-     CRÔNICAS
-========================================= -->
-
-<section
-    class="trailer"
-    id="cronicas"
->
-
-    <div>
-
-        <button
-            class="play"
-            onclick="abrirCronica()"
-        >
-            ▶
-        </button>
-
-        <h2>
-            AS CRÔNICAS COMEÇAM
-        </h2>
-
-        <p>
-            A história da Rocha Chueiri está apenas começando.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
+<!-- =====================================================
      FOOTER
-========================================= -->
+===================================================== -->
 
 <footer>
 
+    <h3>
+        ⚔ A ROCHA CHUEIRI ⚔
+    </h3>
+
+    <br>
+
     <p>
-
-        ⚔ © 2026
-
-        <strong>
-            A Rocha Chueiri
-        </strong>
-
-        ⚔
-
-        <br><br>
-
-        As Montanhas Nebulosas guardam muitos segredos.
-
+        As Crônicas das Montanhas Nebulosas
     </p>
 
 </footer>
@@ -1296,16 +1611,82 @@ footer strong {
 
 <script>
 
-function abrirCronica() {
+/* =====================================================
+   SISTEMA DE ILUMINAÇÃO
+===================================================== */
 
-    alert(
-        "📜 O antigo pergaminho foi aberto...\n\n" +
-        "A Competição Anual está prestes a começar."
-    );
+function alternarTema() {
+
+    document.body.classList.toggle("light");
+
+    const button =
+        document.getElementById("themeButton");
+
+    if (
+        document.body.classList.contains("light")
+    ) {
+
+        button.innerHTML =
+            "☀ Dia";
+
+    } else {
+
+        button.innerHTML =
+            "☾ Noite";
+
+    }
 
 }
 
+
+/* =====================================================
+   EFEITO DO MOUSE
+===================================================== */
+
+const celestial =
+    document.querySelector(".celestial");
+
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const x =
+            (event.clientX / window.innerWidth - .5) * 20;
+
+        const y =
+            (event.clientY / window.innerHeight - .5) * 20;
+
+        celestial.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    }
+);
+
+
+/* =====================================================
+   BRILHO ALEATÓRIO DAS PARTÍCULAS
+===================================================== */
+
+const particles =
+    document.querySelectorAll(".particle");
+
+
+particles.forEach(
+    function(particle) {
+
+        particle.style.top =
+            Math.random() * 100 + "%";
+
+        particle.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>
