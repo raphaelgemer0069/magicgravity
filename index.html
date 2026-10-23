@@ -980,6 +980,86 @@ body.light .window {
 }
 
 
+
+/* =====================================================
+   GUERRA DOS DOIS MUNDO
+===================================================== */
+
+.guerra {
+
+    padding:
+        120px 7%;
+
+    text-align: center;
+
+    background:
+        var(--fundo2);
+
+    transition:
+        background 1s;
+}
+
+.guerra h2 {
+
+    font-size:
+        clamp(34px,6vw,60px);
+
+    color:
+        var(--ouro-claro);
+
+    text-shadow:
+        3px 3px var(--sombra);
+
+    margin-bottom: 40px;
+}
+
+.guerra-moldura {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            #d2aa53,
+            #76511e
+        );
+
+    border:
+        4px double #f0d078;
+
+    box-shadow:
+        0 25px 60px var(--sombra),
+        0 0 40px var(--luz);
+
+    transition: .4s;
+}
+
+.guerra-moldura:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(-.5deg);
+
+    box-shadow:
+        0 25px 60px var(--sombra),
+        0 0 60px var(--ouro);
+}
+
+.guerra-moldura img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    border:
+        3px solid #503013;
+}
+
 /* =====================================================
    TORNEIO
 ===================================================== */
@@ -1277,6 +1357,10 @@ body.light footer {
                 Escola
             </a>
 
+            <a href="#guerra">
+                Guerra
+            </a>
+
             <a href="#torneio">
                 Torneio
             </a>
@@ -1467,6 +1551,35 @@ body.light footer {
 
 
         </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUERRA DOS DOIS MUNDO
+===================================================== -->
+
+<section
+    class="guerra"
+    id="guerra"
+>
+
+    <div class="eyebrow">
+        ✦ UMA LENDA PROIBIDA ✦
+    </div>
+
+    <h2>
+        Guerra dos Dois Mundo
+    </h2>
+
+    <div class="guerra-moldura">
+
+        <img
+            src="imagens/guerra_dos_dois_mundo.png"
+            alt="Guerra dos Dois Mundo"
+        >
 
     </div>
 
